@@ -12,7 +12,7 @@ public class UserBean {
     private String getUserList = "";
 
     public void insertUser(int userID, String email, String fname, String lname, String password, DataAccess db) {
-        connection = DataAccess.getDbConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO users "
@@ -26,7 +26,7 @@ public class UserBean {
 
 
     public String getUserList() {
-        connection = DataAccess.getDbConnection();
+        connection = DataAccess.getConnection();
         String fname;
         String lname;
 

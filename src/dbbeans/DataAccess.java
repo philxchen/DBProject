@@ -11,13 +11,13 @@ import java.util.Properties;
 public class DataAccess {
     private static Connection dbConnection = null;
 
-    public static Connection getDbConnection() {
+    public static Connection getConnection() {
         if (dbConnection != null) {
             return dbConnection;
         } else {
             Properties properties;
             try {
-                FileInputStream in = new FileInputStream("/db.properties");
+                FileInputStream in = new FileInputStream("src/db.properties");
                 properties = new Properties();
                 properties.load(in);
                 in.close();
