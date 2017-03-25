@@ -8,6 +8,10 @@ public class Moderator extends Users {
         this.moderatorId = moderatorId;
     }
 
+    public void setModeratorId(int moderatorId) {
+        this.moderatorId = moderatorId;
+    }
+
     public int getModeratorId() {
         return moderatorId;
     }

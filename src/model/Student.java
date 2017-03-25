@@ -7,6 +7,12 @@ public class Student extends Users {
     private String program;
     private int level;
 
+    public Student(int userId, String email, String fName, String lName, String password, String program, int level) {
+        super(userId, email, fName, lName, password);
+        this.program = program;
+        this.level = level;
+    }
+
     public String getProgram() {
         return program;
     }

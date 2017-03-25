@@ -3,7 +3,7 @@ import java.sql.*;
 /**
  * Created by michaelhuang on 2017-03-25.
  */
-public class ResumeReviewRequestBean {
+public class ResumeReviewBean {
     private Connection connection;
     private Statement st;
     private DataAccess dataaccess;
@@ -17,17 +17,17 @@ public class ResumeReviewRequestBean {
     }
 
 
-    public void insertResumeReviewRequest(int userID,int versionNum , DataAccess db)
+    public void insertJobs(int moderatorId,int userID,int versionNum, String text , DataAccess db)
     {
         connection = db.getConnection();
         try {
             st = connection.createStatement();
-            st.executeUpdate("INSERT INTO ResumeReviewRequest "
-                    + " VALUES ("+userID+","+ versionNum + ")");
+            st.executeUpdate("INSERT INTO ResumeReview "
+                    + " VALUES ("+ moderatorId+","+userID+","+ versionNum+","+text + ")");
             rs.close();
             st.close();
         }catch(Exception e){
-            System.out.println("Cant insert into ResumeReviewRequest");
+            System.out.println("Cant insert into ResumeReview");
         }
     }
 

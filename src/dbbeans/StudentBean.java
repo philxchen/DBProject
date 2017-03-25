@@ -30,7 +30,7 @@ public class StudentBean {
             rs.close();
             st.close();
         }catch(Exception e){
-            System.out.println("Cant insert into Users");
+            System.out.println("Cant insert into student");
         }
     }
 

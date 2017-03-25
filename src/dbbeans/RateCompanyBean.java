@@ -17,17 +17,17 @@ public class RateCompanyBean {
     }
 
 
-    public void insertJobs(int userID,String companyName, int mark , DataAccess db)
+    public void insertRateCompany(int userID,String companyName, int mark , DataAccess db)
     {
         connection = db.getConnection();
         try {
             st = connection.createStatement();
-            st.executeUpdate("INSERT INTO Jobs "
+            st.executeUpdate("INSERT INTO Rate_Company "
                     + " VALUES ("+userID+","+ companyName+","+mark + ")");
             rs.close();
             st.close();
         }catch(Exception e){
-            System.out.println("Cant insert into Jobs");
+            System.out.println("Cant insert into Rate_Company");
         }
     }
 
