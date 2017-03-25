@@ -44,15 +44,15 @@ public class UserBean {
 
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT u.fname,u.lname FROM users u WHERE * GROUP BY user_ID");
+            rs = st.executeQuery("SELECT * FROM users GROUP BY user_ID");
         } catch(Exception e){
             System.out.println("Cant read likeartist table");
         }
         try{
             while (rs.next())
             {
-                fname=rs.getString("name");
-                lname=rs.getString("aname");
+                fname=rs.getString("Fname");
+                lname=rs.getString("Lname");
                 getUserList+="<tr><tr><td>"
                         + fname
                         + "</td><td>"
