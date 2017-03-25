@@ -8,7 +8,6 @@ public class AdminBean {
     private Statement st;
     private DataAccess dataaccess;
     private ResultSet rs;
-    private String getStudentList="";
 
 
 
@@ -23,12 +22,12 @@ public class AdminBean {
         connection = db.getConnection();
         try {
             st = connection.createStatement();
-            st.executeUpdate("INSERT INTO student "
+            st.executeUpdate("INSERT INTO Admin "
                     + " VALUES ("+userID+", Default )");
             rs.close();
             st.close();
         }catch(Exception e){
-            System.out.println("Cant insert into Users");
+            System.out.println("Cant insert into Admin");
         }
     }
 

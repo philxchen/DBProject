@@ -23,7 +23,7 @@ public class ModeratorBean {
         connection = db.getConnection();
         try {
             st = connection.createStatement();
-            st.executeUpdate("INSERT INTO student "
+            st.executeUpdate("INSERT INTO Moderator "
                     + " VALUES ("+userID+",Default )");
             rs.close();
             st.close();
