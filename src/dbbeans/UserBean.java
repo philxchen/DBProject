@@ -8,59 +8,46 @@ import java.sql.*;
 public class UserBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
-    private String getUserList="";
+    private String getUserList = "";
 
-
-
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
-
-
-
-    public void insertUser(int userID, String email, String fname, String lname, String password, DataAccess db)
-    {
-        connection = db.getConnection();
+    public void insertUser(int userID, String email, String fname, String lname, String password, DataAccess db) {
+        connection = DataAccess.getDbConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO users "
-                    + " VALUES ("+userID+"," + email + ","+fname+","+lname+","+password+")");
+                    + " VALUES (" + userID + "," + email + "," + fname + "," + lname + "," + password + ")");
             rs.close();
             st.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Cant insert into Users");
         }
     }
 
 
-    public String getUserList()
-    {
-        connection = dataaccess.getConnection();
+    public String getUserList() {
+        connection = DataAccess.getDbConnection();
         String fname;
         String lname;
 
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT * FROM users GROUP BY user_ID");
-        } catch(Exception e){
-            System.out.println("Cant read likeartist table");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        try{
-            while (rs.next())
-            {
-                fname=rs.getString("Fname");
-                lname=rs.getString("Lname");
-                getUserList+="<tr><tr><td>"
+        try {
+            while (rs.next()) {
+                fname = rs.getString("Fname");
+                lname = rs.getString("Lname");
+                getUserList += "<tr><tr><td>"
                         + fname
                         + "</td><td>"
                         + lname
-                        +"</td></tr>";
+                        + "</td></tr>";
             }
-        }catch(Exception e){
-            System.out.println("Error creating table "+e);
+        } catch (Exception e) {
+            System.out.println("Error creating table " + e);
         }
         return getUserList;
     }

@@ -1,78 +1,39 @@
 package dbbeans;
 
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+
 /**
- * Created by michaelhuang on 2017-03-25.
+ * provides access to our database
  */
-import java.sql.*;
+public class DataAccess {
+    private static Connection dbConnection = null;
 
-public class DataAccess
-{
+    public static Connection getDbConnection() {
+        if (dbConnection != null) {
+            return dbConnection;
+        } else {
+            Properties properties;
+            try {
+                FileInputStream in = new FileInputStream("/db.properties");
+                properties = new Properties();
+                properties.load(in);
+                in.close();
 
-    private Connection connection;
-    private Statement st;
-    private ResultSet rs;
+                String driver = properties.getProperty("driver");
+                String url = properties.getProperty("url");
+                String username = properties.getProperty("username");
+                String password = properties.getProperty("password");
 
-    public DataAccess()
-    {
-    }
+                Class.forName(driver).newInstance();
+                dbConnection = DriverManager.getConnection(url, username, password);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-    public Connection getConnection()
-    {
-        return connection;
-    }
-
-
-    public void openConnection() {
-        try
-        {
-
-
-            Class.forName("org.postgresql.Driver");
-            //connection = DriverManager.getConnection("jdbc:postgresql://web0.site.uottawa.ca:15432/svale054","svale054",password.getPass());
-            connection = DriverManager.getConnection("jdbc:postgresql://acadb:5432/jhuan132","jhuan132","Aimilingyun0324!");
-            System.out.println("Connection Established");
-        }catch(Exception e){
-            System.out.println("No connection established: "+e.toString());
+            return dbConnection;
         }
     }
-
-
-
-
-    public boolean siguiente() {
-        try {
-            return (rs.next());
-        } catch(Exception e){
-            System.out.println("Error moving to the next one");
-            return false;
-        }
-    }
-
-
-    public String getField(String name){
-        try {
-            return (rs.getString(name));
-        } catch(Exception e){
-            System.out.println("Error getting the field");
-            return "";
-        }
-    }
-
-
-    public void closeConsult(){
-        try {
-            rs.close();
-            st.close();
-        } catch(Exception e){}
-    }
-
-    public void closeConnection() {
-        try {
-            connection.close();
-        } catch (Exception e){}
-    }
-
-
-
 }
-
