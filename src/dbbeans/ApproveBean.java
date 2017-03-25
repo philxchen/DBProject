@@ -3,11 +3,12 @@ import java.sql.*;
 /**
  * Created by philxchen on 3/25/17.
  */
-public class AdminBean {
+public class ApproveBean {
     private Connection connection;
     private Statement st;
     private DataAccess dataaccess;
     private ResultSet rs;
+
 
 
 
@@ -17,17 +18,17 @@ public class AdminBean {
     }
 
 
-    public void insertAdmin(int userID, DataAccess db)
+    public void insertApprove(int adminID,int jobID, DataAccess db)
     {
         connection = db.getConnection();
         try {
             st = connection.createStatement();
-            st.executeUpdate("INSERT INTO Admin "
-                    + " VALUES ("+userID+", Default )");
+            st.executeUpdate("INSERT INTO approve "
+                    + " VALUES ("+adminID+","+ jobID+ ")");
             rs.close();
             st.close();
         }catch(Exception e){
-            System.out.println("Cant insert into Admin");
+            System.out.println("Cant insert into Approve");
         }
     }
 

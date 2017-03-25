@@ -26,7 +26,7 @@ public class StudentBean {
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO student "
-                    + " VALUES ("+userID+"," + program + ","+student_level+","+")");
+                    + " VALUES ("+userID+"," + program + ","+student_level+")");
             rs.close();
             st.close();
         }catch(Exception e){
