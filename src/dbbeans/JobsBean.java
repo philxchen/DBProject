@@ -6,20 +6,15 @@ import java.sql.*;
 public class JobsBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertJobs(String companyName,String title,String description, int studentLevel,int numOfPos, int salary, Date start_end,Date end_date , DataAccess db)
+    public void insertJobs(String companyName,String title,String description, int studentLevel,int numOfPos, int salary, Date start_end,Date end_date )
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Jobs "

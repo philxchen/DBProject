@@ -11,7 +11,7 @@ public class UserBean {
     private ResultSet rs;
     private String getUserList = "";
 
-    public void insertUser(int userID, String email, String fname, String lname, String password, DataAccess db) {
+    public void insertUser(int userID, String email, String fname, String lname, String password) {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();

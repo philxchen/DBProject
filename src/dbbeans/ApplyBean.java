@@ -6,21 +6,16 @@ import java.sql.*;
 public class ApplyBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertApply(int userID,int jobID, DataAccess db)
+    public void insertApply(int userID,int jobID)
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO apply "

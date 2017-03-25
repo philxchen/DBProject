@@ -8,17 +8,13 @@ import java.sql.*;
 public class ResumeBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
-    public void setDataAccess(DataAccess db) {
-        dataaccess = db;
-    }
 
 
-    public void insertResume(int userID, int versionNum, String education, String skill, String workExp, DataAccess db) {
-        connection = db.getConnection();
+    public void insertResume(int userID, int versionNum, String education, String skill, String workExp) {
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Resume "

@@ -6,19 +6,14 @@ import java.sql.*;
 public class CompanyBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertCompany(String companyName,int numOfEmployee,String location,String website, DataAccess db)
+    public void insertCompany(String companyName,int numOfEmployee,String location,String website)
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO company "

@@ -6,20 +6,15 @@ import java.sql.*;
 public class ReviewBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertReview(int userID,int reviewId, String companyName,Date date,String title, String body , DataAccess db)
+    public void insertReview(int userID,int reviewId, String companyName,Date date,String title, String body )
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Review "

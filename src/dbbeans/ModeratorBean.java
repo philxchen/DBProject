@@ -6,21 +6,16 @@ import java.sql.*;
 public class ModeratorBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
     private String getStudentList="";
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertModerator(int userID, DataAccess db)
+    public void insertModerator(int userID)
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Moderator "

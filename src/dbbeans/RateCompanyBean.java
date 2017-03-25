@@ -6,20 +6,15 @@ import java.sql.*;
 public class RateCompanyBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertRateCompany(int userID,String companyName, int mark , DataAccess db)
+    public void insertRateCompany(int userID,String companyName, int mark )
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Rate_Company "

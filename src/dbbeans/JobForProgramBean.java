@@ -6,21 +6,16 @@ import java.sql.*;
 public class JobForProgramBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertJobForProgram(String programName,int jobID, DataAccess db)
+    public void insertJobForProgram(String programName,int jobID)
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Job_for_program "

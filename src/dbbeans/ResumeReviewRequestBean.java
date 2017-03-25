@@ -6,20 +6,15 @@ import java.sql.*;
 public class ResumeReviewRequestBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertResumeReviewRequest(int userID,int versionNum , DataAccess db)
+    public void insertResumeReviewRequest(int userID,int versionNum)
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO ResumeReviewRequest "

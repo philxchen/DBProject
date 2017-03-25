@@ -6,20 +6,15 @@ import java.sql.*;
 public class ProgramBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertProgram(String programName,String field , DataAccess db)
+    public void insertProgram(String programName,String field )
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO program "

@@ -6,20 +6,15 @@ import java.sql.*;
 public class UpvoteBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertUpvote(int userID,int reviewId , DataAccess db)
+    public void insertUpvote(int userID,int reviewId )
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Upvote "

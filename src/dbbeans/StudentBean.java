@@ -8,21 +8,16 @@ import java.sql.*;
 public class StudentBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
     private String getStudentList="";
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertStudent(int userID, String program, int student_level, DataAccess db)
+    public void insertStudent(int userID, String program, int student_level)
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO student "
@@ -37,7 +32,7 @@ public class StudentBean {
 
     public String getStudentList()
     {
-        connection = dataaccess.getConnection();
+        connection = DataAccess.getConnection();
         String fname;
         String lname;
 

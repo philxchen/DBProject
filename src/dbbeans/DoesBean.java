@@ -6,21 +6,16 @@ import java.sql.*;
 public class DoesBean {
     private Connection connection;
     private Statement st;
-    private DataAccess dataaccess;
     private ResultSet rs;
 
 
 
 
-    public void setDataAccess(DataAccess db)
-    {
-        dataaccess = db;
-    }
 
 
-    public void insertDoes(int userID,int jobID, DataAccess db)
+    public void insertDoes(int userID,int jobID )
     {
-        connection = db.getConnection();
+        connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Does "
