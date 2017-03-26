@@ -16,12 +16,14 @@ public class CompanyBean {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
+            System.out.println(connection.getSchema());
             st.executeUpdate("INSERT INTO company "
-                    + " VALUES ("+companyName +","+ numOfEmployee+","+location+","+website+ ")");
-            rs.close();
+                    + " VALUES ('"+companyName +"',"+ numOfEmployee+",'"+location+"','"+website+ "')");
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Company");
+            e.printStackTrace();
+
         }
     }
 
@@ -32,28 +34,22 @@ public class CompanyBean {
 
         try{
             st = connection.createStatement();
-            //System.out.println(connection.getSchema());
             rs  = st.executeQuery("SELECT avg(Mark) FROM Rate_Company r, Company c Where r.company_Name=c.company_Name AND c.company_Name='"+
                     companyName + "'"
                     );
-            System.out.print(rs);
-            if (rs.first()) {
+            if (rs.next()) {
                 rating=rs.getDouble(1);
             }
 
+
             st.close();
         }catch(Exception e){
-            System.out.println("Cant read company table");
+            e.printStackTrace();
         }
         return rating;
     }
 
-    public static void main(String[] args) {
-        CompanyBean company=new CompanyBean();
-        double rating=0;
-        rating=company.getRating("Red 1 Engineering");
-        System.out.print(rating);
-    }
+    
 }
 
 
