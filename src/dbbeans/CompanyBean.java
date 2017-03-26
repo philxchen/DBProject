@@ -49,7 +49,7 @@ public class CompanyBean {
         return rating;
     }
 
-    
+
 }
 
 
