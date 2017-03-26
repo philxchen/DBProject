@@ -129,5 +129,7 @@ fabric.properties
 .idea/inspectionProfiles/
 .idea/vcs.xml
 web/WEB-INF/lib/
-/src/db.properties
+/WEB-INF/db.properties
 !/web/WEB-INF/lib/
+/WEB-INF/lib/db.properties
+lib/

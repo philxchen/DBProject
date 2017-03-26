@@ -1,6 +1,8 @@
 package dbbeans;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -17,8 +19,9 @@ public class DataAccess {
         } else {
             Properties properties;
             try {
-                FileInputStream in = new FileInputStream("src/db.properties");
                 properties = new Properties();
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                InputStream in = classLoader.getResourceAsStream("db.properties");
                 properties.load(in);
                 in.close();
 

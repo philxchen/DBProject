@@ -1,6 +1,7 @@
 package dbbeans;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by philxchen on 3/25/17.
@@ -9,11 +10,7 @@ public class StudentBean {
     private Connection connection;
     private Statement st;
     private ResultSet rs;
-    private String getStudentList="";
-
-
-
-
+    private ArrayList<String> studentList = new ArrayList<>();
 
     public void insertStudent(int userID, String program, int student_level)
     {
@@ -30,7 +27,7 @@ public class StudentBean {
     }
 
 
-    public String getStudentList()
+    public ArrayList getStudentList()
     {
         connection = DataAccess.getConnection();
         String fname;
@@ -47,16 +44,12 @@ public class StudentBean {
             {
                 fname=rs.getString("fame");
                 lname=rs.getString("lname");
-                getStudentList+="<tr><tr><td>"
-                        + fname
-                        + "</td><td>"
-                        + lname
-                        +"</td></tr>";
+                studentList.add(fname + " " + lname);
             }
         }catch(Exception e){
             System.out.println("Error creating table "+e);
         }
-        return getStudentList;
+        return studentList;
     }
 
 }
