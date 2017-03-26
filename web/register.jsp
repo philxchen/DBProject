@@ -1,8 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-String error= (String)session.getAttribute("error");
-ArrayList allProgram= (ArrayList) session.getAttribute("programList");
+    String error = (String) session.getAttribute("error");
+    ArrayList allProgram = (ArrayList) session.getAttribute("programList");
 %>
 <html>
 <head>
@@ -15,25 +15,24 @@ ArrayList allProgram= (ArrayList) session.getAttribute("programList");
         <tr>
             <td>Email</td>
             <td><label><input type="email" name="email"></label></td>
-
         </tr>
-    <tr>
-    <td>First Name</td>
-    <td><label><input type="text" name="fName"></label></td>
+        <tr>
+            <td>First Name</td>
+            <td><label><input type="text" name="fName"></label></td>
 
-        <% if(error!=null){
-            if(error.equals("1")){
-                out.print("first name error");
-            }else if(error.equals("2")){
-                out.print("last name error");
-            }else if(error.equals("3")){
-                out.print("password null");
-            }else if(error.equals("4")){
-                out.print("confirm error");
+            <% if (error != null) {
+                if (error.equals("1")) {
+                    out.print("first name error");
+                } else if (error.equals("2")) {
+                    out.print("last name error");
+                } else if (error.equals("3")) {
+                    out.print("password null");
+                } else if (error.equals("4")) {
+                    out.print("confirm error");
+                }
             }
-        }
-        %>
-    </tr>
+            %>
+        </tr>
 
         <tr>
             <td>Last Name</td>
@@ -54,7 +53,7 @@ ArrayList allProgram= (ArrayList) session.getAttribute("programList");
             </label></td>
         </tr>
 
-        
+
         <tr>
             <td>Password</td>
             <td><label><input type="password" name="password"></label></td>
@@ -66,9 +65,7 @@ ArrayList allProgram= (ArrayList) session.getAttribute("programList");
         </tr>
 
 
-
-
-    <%--TODO: pwd validation--%>
+        <%--TODO: pwd validation--%>
     </table>
     <input type="submit" value="Register">
 </form>

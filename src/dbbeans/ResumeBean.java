@@ -15,8 +15,8 @@ public class ResumeBean {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
-            st.executeUpdate("INSERT INTO Resume "
-                    + " VALUES (" + userID + ", "
+            st.executeUpdate("INSERT INTO Resume VALUES ("
+                    + userID + ", "
                     + versionNum + ", '"
                     + education + "', '"
                     + skill + "', '"
@@ -33,7 +33,7 @@ public class ResumeBean {
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT MAX(version_number)" +
-                    "FROM resume" +
+                    "FROM resume " +
                     "WHERE User_ID = " + userId);
             if (rs.next()) {
                 return rs.getInt(1);

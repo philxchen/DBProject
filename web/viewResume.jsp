@@ -5,6 +5,10 @@
 </head>
 <body>
 <jsp:include page="studentHeader.jsp"/>
-
+<h1>
+    <%
+        out.print(session.getAttribute("userName"));
+    %>
+</h1>
 </body>
 </html>
