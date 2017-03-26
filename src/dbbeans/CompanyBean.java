@@ -1,5 +1,7 @@
 package dbbeans;
 import java.sql.*;
+import java.util.ArrayList;
+
 /**
  * Created by philxchen on 3/25/17.
  */
@@ -7,7 +9,7 @@ public class CompanyBean {
     private Connection connection;
     private Statement st;
     private ResultSet rs;
-
+    private ArrayList<String>companyListBasedOnLocation=new ArrayList<>();
 
 
 
@@ -41,13 +43,31 @@ public class CompanyBean {
                 rating=rs.getDouble(1);
             }
 
-
             st.close();
         }catch(Exception e){
             e.printStackTrace();
         }
         return rating;
     }
+    public ArrayList<String> getCompanyListBasedOnLocation(String location){
+        String companyName="";
+        connection=DataAccess.getConnection();
+        try{
+            st=connection.createStatement();
+            rs=st.executeQuery("SELECT Company_Name FROM company where location='"+location+"'");
+            while(rs.next()){
+                companyName=rs.getString("Company_Name");
+                companyListBasedOnLocation.add(companyName);
+            }
+        }
+        catch (Exception e){
+            System.out.println("cant get list based on location");
+            e.printStackTrace();
+
+        }
+        return companyListBasedOnLocation;
+    }
+
 
 
 }
