@@ -11,7 +11,7 @@ public class ProgramBean {
     private ResultSet rs;
     private String getStudentListInProgram;
     private ArrayList<String> programInField=new ArrayList<>();
-
+    private ArrayList<String> allProgram =new ArrayList<>();
 
 
 
@@ -76,7 +76,7 @@ public class ProgramBean {
         try{
             while (rs.next())
             {
-                programName=rs.getString("fame");
+                programName=rs.getString("Program_Name");
                 programInField.add(programName);
 
             }
@@ -84,6 +84,28 @@ public class ProgramBean {
             System.out.println("Error creating table "+e);
         }
         return programInField;
+
+    }
+    public ArrayList<String> getAllProgram(){
+        connection = DataAccess.getConnection();
+        String programName;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT Program_Name FROM program " );
+        } catch(Exception e){
+            System.out.println("Cant read program table");
+        }
+        try{
+            while (rs.next())
+            {
+                programName=rs.getString("Program_Name");
+                allProgram.add(programName);
+
+            }
+        }catch(Exception e){
+            System.out.println("Error creating table "+e);
+        }
+        return allProgram;
 
     }
 
