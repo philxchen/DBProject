@@ -16,7 +16,7 @@ public class ResumeBean {
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Resume "
-                    + " VALUES (" + userID + ", "
+                    + " VALUES (" + userID + ","
                     + versionNum + ", '"
                     + education + "', '"
                     + skill + "', '"

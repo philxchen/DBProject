@@ -14,17 +14,18 @@ public class JobsBean {
 
 
 
-    public void insertJobs(String companyName,String title,String description, int studentLevel,int numOfPos, int salary, Date start_end,Date end_date )
+    public void insertJobs(String companyName,String title,String description, int studentLevel,int numOfPos, int salary, Date start_date,Date end_date )
     {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Jobs "
-                    + " VALUES (default "+ companyName+","+ title+","+description+","+studentLevel+","+numOfPos+","+salary+","+start_end+","+end_date+ ")");
-            rs.close();
+                    + " VALUES (default '"+ companyName+"','"+ title+"','"+description+"',"+studentLevel+","+numOfPos+","+salary+",'"+start_date+"','"+end_date+ "')");
+
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Job_for_program");
+            e.printStackTrace();
         }
     }
     public ArrayList<String> getJobListBasedOnLocation(String location){

@@ -18,11 +18,12 @@ public class ResumeReviewBean {
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO ResumeReview "
-                    + " VALUES ("+ moderatorId+","+userID+","+ versionNum+","+text + ")");
+                    + " VALUES ("+ moderatorId+","+userID+","+ versionNum+",'"+text + "')");
             rs.close();
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into ResumeReview");
+            e.printStackTrace();
         }
     }
 

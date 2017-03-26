@@ -6,7 +6,7 @@ import java.sql.*;
 public class AdminBean {
     private Connection connection;
     private Statement st;
-    private ResultSet rs;
+
 
 
 
@@ -17,10 +17,11 @@ public class AdminBean {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Admin "
                     + " VALUES ("+userID+", Default )");
-            rs.close();
+
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Admin");
+            e.printStackTrace();
         }
     }
 

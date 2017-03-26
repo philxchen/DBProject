@@ -1,8 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="dbbeans.ProgramBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+
+
 String error= (String)session.getAttribute("error");
-ArrayList allProgram= (ArrayList) session.getAttribute("programList");
+    session.setAttribute("programList",(new ProgramBean()).getAllProgram());
 %>
 <html>
 <head>
@@ -43,7 +47,7 @@ ArrayList allProgram= (ArrayList) session.getAttribute("programList");
 
         <tr>
             <td>StudentLevel</td>
-            <td><label><select studentLevel="studentLevel">
+            <td><label><select name="studentLevel">
                 <option value=1 selected>1</option>
                 <option value=2>2</option>
                 <option value=3>3</option>
@@ -54,7 +58,27 @@ ArrayList allProgram= (ArrayList) session.getAttribute("programList");
             </label></td>
         </tr>
 
-        
+        <tr>
+            <td>Program</td>
+            <td>
+                <%--<select name="program">--%>
+                    <%--<option value="<%= allProgram.get(0) %>" selected><%=allProgram.get(0)  %></option>--%>
+                    <%--<%  for(int i = 1; i < allProgram.size(); i++) {--%>
+                        <%--String option = (String)allProgram.get(i);--%>
+                    <%--%>--%>
+                    <%--<option value="<%= option %>"><%= option %></option>--%>
+                    <%--<% } %>--%>
+                <%--</select>--%>
+            <select name="program">
+                <c:forEach items="${programList}" var="program">
+                    <option value="${program}">
+                        ${program}
+                    </option>
+                </c:forEach>
+            </select>
+            </td>
+        </tr>
+
         <tr>
             <td>Password</td>
             <td><label><input type="password" name="password"></label></td>

@@ -22,11 +22,11 @@ public class ProgramBean {
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO program "
-                    + " VALUES ("+ programName+","+ field+ ")");
-            rs.close();
+                    + " VALUES ('"+ programName+"',"+ field+ ")");
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into program");
+            e.printStackTrace();
         }
     }
 
@@ -40,9 +40,10 @@ public class ProgramBean {
                 st = connection.createStatement();
                 rs = st.executeQuery("SELECT s.fname,s.lname " +
                         "FROM program p, student s " +
-                        "WHERE p.program_Name = s.program AND p.program_Name=" + programName);
+                        "WHERE p.program_Name = s.program AND p.program_Name='" + programName+"'");
             } catch(Exception e){
                 System.out.println("Cant read program table");
+                e.printStackTrace();
             }
             try{
                 while (rs.next())
@@ -57,6 +58,7 @@ public class ProgramBean {
                 }
             }catch(Exception e){
                 System.out.println("Error getListof student "+e);
+                e.printStackTrace();
             }
             return getStudentListInProgram;
 
@@ -69,7 +71,7 @@ public class ProgramBean {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT Program_Name " +
                     "FROM program " +
-                    "WHERE  p.field=" + field);
+                    "WHERE  p.field='" + field+"'");
         } catch(Exception e){
             System.out.println("Cant read program table");
         }
@@ -82,6 +84,7 @@ public class ProgramBean {
             }
         }catch(Exception e){
             System.out.println("Error creating table "+e);
+            e.printStackTrace();
         }
         return programInField;
 
@@ -94,6 +97,7 @@ public class ProgramBean {
             rs = st.executeQuery("SELECT Program_Name FROM program " );
         } catch(Exception e){
             System.out.println("Cant read program table");
+            e.printStackTrace();
         }
         try{
             while (rs.next())
@@ -104,6 +108,7 @@ public class ProgramBean {
             }
         }catch(Exception e){
             System.out.println("Error creating table "+e);
+            e.printStackTrace();
         }
         return allProgram;
 

@@ -18,11 +18,10 @@ public class StudentBean {
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO student "
-                    + " VALUES ("+userID+"," + program + ","+student_level+")");
-            rs.close();
+                    + " VALUES ("+userID+", '" + program + "', "+student_level+")");
             st.close();
         }catch(Exception e){
-            System.out.println("Cant insert into student");
+            e.printStackTrace();
         }
     }
 
@@ -38,6 +37,7 @@ public class StudentBean {
             rs = st.executeQuery("SELECT u.fname,u.lname FROM users u, student s WHERE u.user_ID = s.user_ID GROUP BY user_ID");
         } catch(Exception e){
             System.out.println("Cant read likeartist table");
+            e.printStackTrace();
         }
         try{
             while (rs.next())
@@ -48,6 +48,7 @@ public class StudentBean {
             }
         }catch(Exception e){
             System.out.println("Error creating table "+e);
+            e.printStackTrace();
         }
         return studentList;
     }

@@ -18,11 +18,12 @@ public class RateCompanyBean {
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Rate_Company "
-                    + " VALUES ("+userID+","+ companyName+","+mark + ")");
+                    + " VALUES ("+userID+",'"+ companyName+"',"+mark + ")");
             rs.close();
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Rate_Company");
+            e.printStackTrace();
         }
     }
 

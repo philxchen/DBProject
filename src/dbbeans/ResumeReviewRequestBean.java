@@ -6,7 +6,7 @@ import java.sql.*;
 public class ResumeReviewRequestBean {
     private Connection connection;
     private Statement st;
-    private ResultSet rs;
+
 
 
 
@@ -19,10 +19,11 @@ public class ResumeReviewRequestBean {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO ResumeReviewRequest "
                     + " VALUES ("+userID+","+ versionNum + ")");
-            rs.close();
+
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into ResumeReviewRequest");
+            e.printStackTrace();
         }
     }
 
