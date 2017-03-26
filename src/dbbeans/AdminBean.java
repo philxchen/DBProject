@@ -10,9 +10,6 @@ public class AdminBean {
 
 
 
-
-
-
     public void insertAdmin(int userID)
     {
         connection = DataAccess.getConnection();
@@ -26,8 +23,6 @@ public class AdminBean {
             System.out.println("Cant insert into Admin");
         }
     }
-
-
 
 
 }
