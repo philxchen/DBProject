@@ -58,14 +58,14 @@ public class UsersBean {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT fname, lname FROM users WHERE user_id = " + userId);
 
-            if (rs.first()) {
+            if (rs.next()) {
                 fName = rs.getString("fname");
                 lName = rs.getString("lname");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return fName + lName;
+        return fName + " " + lName;
     }
 
 }

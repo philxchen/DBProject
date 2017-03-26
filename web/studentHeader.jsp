@@ -1,4 +1,4 @@
-<%--
+<%@ page import="dbbeans.UsersBean" %><%--
   header in student pages
 --%>
 <div>
@@ -9,7 +9,7 @@
 
     <h2>Welcome,
     <%
-
+        out.print((new UsersBean()).getUserName((Integer) session.getAttribute("userId")));
     %>
     </h2>
 </div>
