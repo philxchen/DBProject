@@ -12,5 +12,10 @@
 </head>
 <body>
 <jsp:include page="studentHeader.jsp"/>
+<h2>Welcome,
+    <%
+        out.print(session.getAttribute("userName"));
+    %>
+</h2>
 </body>
 </html>
