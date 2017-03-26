@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Created by philxchen on 3/25/17.
@@ -12,6 +13,9 @@ public class CompanyBean {
     private Connection connection;
     private Statement st;
     private ResultSet rs;
+    private ArrayList<String> companyListBasedOnLocation=new ArrayList<>();
+
+
 
     public void insertCompany(String companyName, int numOfEmployee, String location, String website) {
         connection = DataAccess.getConnection();
@@ -45,6 +49,25 @@ public class CompanyBean {
             e.printStackTrace();
         }
         return rating;
+    }
+
+    public ArrayList<String> getCompanyListBasedOnLocation(String location){
+        String companyName="";
+        connection=DataAccess.getConnection();
+        try{
+            st=connection.createStatement();
+            rs=st.executeQuery("SELECT Company_Name FROM company where location='"+location+"'");
+            while(rs.next()){
+                companyName=rs.getString("Company_Name");
+                companyListBasedOnLocation.add(companyName);
+            }
+        }
+        catch (Exception e){
+            System.out.println("cant get list based on location");
+            e.printStackTrace();
+
+        }
+        return companyListBasedOnLocation;
     }
 }
 
