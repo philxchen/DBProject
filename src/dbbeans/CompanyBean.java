@@ -8,22 +8,17 @@ public class CompanyBean {
     private Statement st;
     private ResultSet rs;
 
-
-
-
     public void insertCompany(String companyName,int numOfEmployee,String location,String website)
     {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
-            System.out.println(connection.getSchema());
             st.executeUpdate("INSERT INTO company "
                     + " VALUES ('"+companyName +"',"+ numOfEmployee+",'"+location+"','"+website+ "')");
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Company");
             e.printStackTrace();
-
         }
     }
 
@@ -41,15 +36,12 @@ public class CompanyBean {
                 rating=rs.getDouble(1);
             }
 
-
             st.close();
-        }catch(Exception e){
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return rating;
     }
-
-    
 }
 
 
