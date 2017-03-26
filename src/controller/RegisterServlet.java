@@ -52,7 +52,8 @@ public class RegisterServlet extends HttpServlet {
         }else{
             users.insertUser(email,fname,lname,password);
             student.insertStudent(users.getUserID(),programName,studentLevel);
-            response.sendRedirect("index.jsp");
+            session.setAttribute("userID",users.getUserID());
+            response.sendRedirect("successRegister.jsp");
         }}
         catch (Exception e){
             e.printStackTrace();
