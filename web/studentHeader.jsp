@@ -4,5 +4,12 @@
 <div>
     <a href="studentMain.jsp">Home</a>
     <a href="resume.jsp">Resume</a>
+    <a href="job.jsp">Jobs</a>
     <a href="logout.jsp">Logout</a>
+
+    <h2>Welcome,
+    <%
+
+    %>
+    </h2>
 </div>
