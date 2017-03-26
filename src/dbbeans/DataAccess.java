@@ -32,6 +32,7 @@ public class DataAccess {
 
                 Class.forName(driver).newInstance();
                 dbConnection = DriverManager.getConnection(url, username, password);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
