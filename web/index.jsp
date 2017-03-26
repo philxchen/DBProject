@@ -28,7 +28,7 @@
     </table>
     <br>
     <input type="submit" value="Submit">
-    Not yet registered? click <a href="register.jsp">here</a> to register
+    You're a student but not yet registered? Click <a href="register.jsp">here</a> to register
 </form>
 </body>
 </html>

@@ -7,9 +7,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
-@WebServlet("/LoginServlet")
+@WebServlet(name = "LoginServlet")
 public class LoginServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String role = request.getParameter("roles");
@@ -22,9 +23,6 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
             try {
                 Statement st = connection.createStatement();
                 ResultSet rs;
-//                st.executeUpdate("INSERT INTO users "
-//                        + " VALUES (" + userID + "," + email + "," + fname + "," + lname + "," + password + ")");
-//                rs.close();
                 switch (role) {
                     case "student":
                         rs = st.executeQuery("SELECT * FROM student s, users u " +
@@ -68,7 +66,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
                         break;
                 }
                 st.close();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Cant insert into Users");
             }
         }

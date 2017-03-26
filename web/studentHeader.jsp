@@ -1,6 +1,7 @@
-<%@ page import="dbbeans.UsersBean" %><%--
+<%--
   header in student pages
 --%>
+<%@ page import="dbbeans.UsersBean" %>
 <div>
     <a href="studentMain.jsp">Home</a>
     <a href="resume.jsp">Resume</a>
