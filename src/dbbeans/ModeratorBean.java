@@ -24,6 +24,7 @@ public class ModeratorBean {
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Moderator");
+            e.printStackTrace();
         }
     }
 

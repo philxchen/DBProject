@@ -23,6 +23,7 @@ public class ApproveBean {
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Approve");
+            e.printStackTrace();
         }
     }
 

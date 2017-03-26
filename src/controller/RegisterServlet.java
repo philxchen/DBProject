@@ -1,6 +1,8 @@
 package controller;
 
 import dbbeans.ProgramBean;
+import dbbeans.StudentBean;
+import dbbeans.UsersBean;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,12 +24,13 @@ public class RegisterServlet extends HttpServlet {
         String password=request.getParameter("password");
         String confirmPassword=request.getParameter("confirmPassword");
         int studentLevel=Integer.parseInt(request.getParameter("studentLevel"));
-
-        ProgramBean program=new ProgramBean();
+        String programName=request.getParameter("program");
+        UsersBean users=new UsersBean();
+        StudentBean student=new StudentBean();
         HttpSession session=request.getSession();
 
         try{
-            session.setAttribute("programList",program.getAllProgram());
+
         if(fname ==null ||fname.equals("") ){
             session.setAttribute("error","1");
             response.sendRedirect("register.jsp");
@@ -47,8 +50,10 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("error","4");
             response.sendRedirect("register.jsp");
         }else{
-
-            response.sendRedirect("index.jsp");
+            users.insertUser(email,fname,lname,password);
+            student.insertStudent(users.getUserID(),programName,studentLevel);
+            session.setAttribute("userID",users.getUserID());
+            response.sendRedirect("successRegister.jsp");
         }}
         catch (Exception e){
             e.printStackTrace();

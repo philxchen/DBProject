@@ -10,16 +10,33 @@ public class UsersBean {
     private Statement st;
     private ResultSet rs;
     private String getUserList = "";
+    private int userID;
+    private String email;
 
-    public void insertUser(int userID, String email, String fname, String lname, String password) {
+
+    public int getUserID(){
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
+            rs=st.executeQuery("SELECT user_ID FROM Users WHERE email='"+email + "'");
+            if(rs.next()){
+                userID=rs.getInt("user_ID");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userID;
+    }
+    public void insertUser( String email, String fname, String lname, String password) {
+        connection = DataAccess.getConnection();
+        this.email=email;
+        try {
+            st = connection.createStatement();
             st.executeUpdate("INSERT INTO users "
-                    + " VALUES (" + userID + "," + email + "," + fname + "," + lname + "," + password + ")");
+                    + " VALUES (DEFAULT" + ", '" + email + "', '" + fname + "', '" + lname + "', '" + password + "')");
             st.close();
         } catch (Exception e) {
-            System.out.println("Cant insert into Users");
+            e.printStackTrace();
         }
     }
 

@@ -6,7 +6,6 @@ import java.sql.*;
 public class DoesBean {
     private Connection connection;
     private Statement st;
-    private ResultSet rs;
 
 
 
@@ -20,10 +19,10 @@ public class DoesBean {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Does "
                     + " VALUES ("+userID+","+ jobID+ ")");
-            rs.close();
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Does");
+            e.printStackTrace();
         }
     }
 

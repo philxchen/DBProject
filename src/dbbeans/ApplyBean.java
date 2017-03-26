@@ -24,6 +24,7 @@ public class ApplyBean {
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Apply");
+            e.printStackTrace();
         }
     }
 
