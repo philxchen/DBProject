@@ -20,7 +20,7 @@ public class JobForProgramBean {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Job_for_program "
                     + " VALUES ('"+programName+"',"+ jobID+ ")");
-            rs.close();
+
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Job_for_program");

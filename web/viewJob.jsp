@@ -46,7 +46,7 @@
 <body>
 <a href="studentMain.jsp">Home</a>
 <a href="job.jsp">Back</a>
-<a href="jobReview.jsp">See Review</a>
+
 <a href="logout.jsp">Logout</a>
 
 <br/>
@@ -65,7 +65,7 @@ Company Name is <% out.print(companyName);%>
 <br/>
 Number of position is <% out.print(numOfPos); %>
 <br/>
-<a href="jobReview.jsp?jobId=<%=jobId%>">See Job Review</a>
+
 <br/>
 <a href="applySuccess.jsp?jobId=<%=jobId%>&numOfPos=<%=numOfPos %>">Apply</a>
 <br/>

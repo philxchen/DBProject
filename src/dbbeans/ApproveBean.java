@@ -19,7 +19,7 @@ public class ApproveBean {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO approve "
                     + " VALUES ("+adminID+","+ jobID+ ")");
-            rs.close();
+
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Approve");

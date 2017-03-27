@@ -60,6 +60,9 @@ double rating=(new CompanyBean()).getRating(companyName);
     %>
     </tr>
 </table>
+<br/>
+<br/>The reviews for this company
+
 
 </body>
 </html>
