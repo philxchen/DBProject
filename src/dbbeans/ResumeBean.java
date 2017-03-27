@@ -1,7 +1,6 @@
 package dbbeans;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * Created by michaelhuang on 2017-03-25.
@@ -32,7 +31,7 @@ public class ResumeBean {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT MAX(version_number)" +
+            rs = st.executeQuery("SELECT MAX(version_number) " +
                     "FROM resume " +
                     "WHERE User_ID = " + userId);
             if (rs.next()) {
