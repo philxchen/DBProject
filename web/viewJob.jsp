@@ -65,15 +65,11 @@ Company Name is <% out.print(companyName);%>
 <br/>
 Number of position is <% out.print(numOfPos); %>
 <br/>
-<form method="post" action="JobViewServlet">
-    <input type="submit" name="seeJobReview" value="See Job Review" >
-    <br>
-    <input type="submit" name="apply" value="Apply">
-    <br>
-    <input type="submit" name="companyInfo" value="Company Information">
-    <br>
-
-</form>
+<a href="jobReview.jsp?jobId=<%=jobId%>">See Job Review</a>
+<br/>
+<a href="applySuccess.jsp?jobId=<%=jobId%>&numOfPos=<%=numOfPos %>">Apply</a>
+<br/>
+<a href="companyInfo.jsp?companyName=<%=companyName%>">Company Information</a>
 </body>
 
 </html>

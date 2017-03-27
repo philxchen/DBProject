@@ -8,10 +8,24 @@ public class ApplyBean {
     private Statement st;
     private ResultSet rs;
 
+    public boolean existsApply(int userId, int jobId) {
+        boolean exists = false;
+        connection = DataAccess.getConnection();
 
-
-
-
+        try{
+            st = connection.createStatement();
+            rs  = st.executeQuery("SELECT * FROM Apply WHERE User_ID='"+userId +"' AND Job_ID="+jobId+"'");
+            if (rs.next())
+            {
+                exists=true;
+            }
+            rs.close();
+            st.close();
+        }catch(Exception e){
+            System.out.println("Cant read likeartist table");
+        }
+        return(exists);
+    }
 
     public void insertApply(int userID,int jobID)
     {
@@ -20,7 +34,6 @@ public class ApplyBean {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO apply "
                     + " VALUES ("+userID+","+ jobID+ ")");
-            rs.close();
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Apply");
@@ -28,10 +41,4 @@ public class ApplyBean {
         }
     }
 
-
-
-
 }
-
-
-

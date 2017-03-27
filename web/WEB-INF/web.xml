@@ -27,6 +27,13 @@
         <servlet-name>CreateResumeServlet</servlet-name>
         <url-pattern>/CreateResumeServlet</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>JobViewServlet</servlet-name>
+        <servlet-class>controller.JobViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JobViewServlet</servlet-name>
+        <url-pattern>/JobViewServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>
