@@ -7,11 +7,6 @@ public class ResumeReviewRequestBean {
     private Connection connection;
     private Statement st;
 
-
-
-
-
-
     public void insertResumeReviewRequest(int userID,int versionNum)
     {
         connection = DataAccess.getConnection();
