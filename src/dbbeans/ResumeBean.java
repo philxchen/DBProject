@@ -44,6 +44,31 @@ public class ResumeBean {
         }
         return 0;
     }
+
+    public String retrieveResumeContent(int userId, int version) {
+        connection = DataAccess.getConnection();
+        String resultHtml = "";
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT education, skill, work_experience " +
+                    "FROM resume " +
+                    "WHERE user_id = " + userId + " AND version_number = " + version);
+            if (rs.next()) {
+                resultHtml = "<table><tr><td>Education: </td><td>" +
+                        rs.getString("education") +
+                        "</td></tr><tr><td>Skills: </td><td>" +
+                        rs.getString("skill") +
+                        "</td></tr><tr><td>Work experience: </td><td>" +
+                        rs.getString("work_experience") +
+                        "</td></tr></table>";
+            }
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultHtml;
+    }
 }
 
 
