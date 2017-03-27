@@ -69,5 +69,3 @@ public class ResumeBean {
         return resultHtml;
     }
 }
-
-

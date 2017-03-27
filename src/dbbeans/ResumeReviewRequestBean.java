@@ -19,7 +19,6 @@ public class ResumeReviewRequestBean {
 
             st.close();
         } catch (Exception e) {
-            System.out.println("Cant insert into ResumeReviewRequest");
             e.printStackTrace();
         }
     }
@@ -33,6 +32,21 @@ public class ResumeReviewRequestBean {
                     "FROM resumereviewrequest " +
                     "WHERE user_id = " + userId + " AND version_number = " + version);
             result = rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean revokeResumeReviewRequest(int userId, int version) {
+        boolean result = false;
+        connection = DataAccess.getConnection();
+        try {
+            st = connection.createStatement();
+            st.executeUpdate("DELETE " +
+                    "FROM resumereviewrequest " +
+                    "WHERE user_id = " + userId + " AND version_number = " + version);
+            result = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

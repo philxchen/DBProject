@@ -105,7 +105,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
                 st.close();
             } catch (SQLException e) {
-                System.out.println("Cant insert into Users");
+                e.printStackTrace();
             }
         }
     }
