@@ -59,14 +59,7 @@ String error= (String)session.getAttribute("error");
         <tr>
             <td>Program</td>
             <td>
-                <%--<select name="program">--%>
-                    <%--<option value="<%= allProgram.get(0) %>" selected><%=allProgram.get(0)  %></option>--%>
-                    <%--<%  for(int i = 1; i < allProgram.size(); i++) {--%>
-                        <%--String option = (String)allProgram.get(i);--%>
-                    <%--%>--%>
-                    <%--<option value="<%= option %>"><%= option %></option>--%>
-                    <%--<% } %>--%>
-                <%--</select>--%>
+
             <select name="program">
                 <c:forEach items="${programList}" var="program">
                     <option value="${program}">
@@ -86,7 +79,7 @@ String error= (String)session.getAttribute("error");
             <td>ConfirmPassword</td>
             <td><label><input type="password" name="confirmPassword"></label></td>
         </tr>
-    <%--TODO: pwd validation--%>
+
     </table>
     <input type="submit" value="Register">
 </form>

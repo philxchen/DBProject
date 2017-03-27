@@ -10,8 +10,7 @@ public class JobsBean {
     private Statement st;
     private ResultSet rs;
     private ArrayList<String> jobListBasedOnLocation=new ArrayList<>();
-
-
+    private String allInformation="";
 
 
     public void insertJobs(String companyName,String title,String description, int studentLevel,int numOfPos, int salary, Date start_date,Date end_date )
@@ -49,6 +48,61 @@ public class JobsBean {
         }
         return jobListBasedOnLocation;
     }
+    public String getAllInformation(){
+        int jobId=0;
+        String companyName="";
+        String description="";
+        int student_Level=1;
+        int numOfPos=0;
+        int salary=0;
+        String title="";
+        Date startDate;
+        Date endDate;
+        connection=DataAccess.getConnection();
+        try{
+            st=connection.createStatement();
+            rs=st.executeQuery("SELECT * FROM jobs");
+            while(rs.next()){
+                jobId=rs.getInt("Job_ID");
+                title=rs.getString("Title");
+                companyName=rs.getString("Company_Name");
+                student_Level=rs.getInt("student_Level");
+                numOfPos=rs.getInt("Number_Of_Positions");
+                salary=rs.getInt("Salary");
+                startDate=rs.getDate("Start_date");
+                endDate=rs.getDate("End_date");
+                allInformation+="<tr><tr><td><a href=\"viewJob.jsp?jobId="
+                        + jobId
+                        + "\">"
+                        + jobId
+                        + "</a></td><td>"
+                        + title
+                        +"</td><td>"
+                        +companyName
+                        +"</td><td>"
+                        +student_Level
+                        +"</td><td>"
+                        +numOfPos
+                        +"</td><td>"
+                        +salary
+                        +"</td><td>"
+                        +startDate
+                        +"</td><td>"
+                        +endDate+
+                        "</td></tr>";
+            }
+        }
+        catch (Exception e){
+            System.out.println("cant get list based on location");
+            e.printStackTrace();
+
+        }
+        return allInformation;
+    }
+
+//    public static void main(String[] args) {
+//        System.out.println((new JobsBean()).getAllInformation());
+//    }
     }
 
 
