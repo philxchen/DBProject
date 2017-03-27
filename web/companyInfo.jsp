@@ -3,7 +3,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="dbbeans.DataAccess" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="dbbeans.ReviewBean" %><%--
   Created by IntelliJ IDEA.
   User: michaelhuang
   Date: 2017-03-26
@@ -62,7 +63,20 @@ double rating=(new CompanyBean()).getRating(companyName);
 </table>
 <br/>
 <br/>The reviews for this company
+<table style="width:100%">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>VoteCount</th>
+        <th>Upvote</th>
 
+    </tr>
+    <tr><%
+        out.print((new ReviewBean()).getReviewInfoBaseOnCompany(companyName));
+    %>
+    </tr>
+</table>
 
 </body>
 </html>
