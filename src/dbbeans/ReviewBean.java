@@ -19,7 +19,6 @@ public class ReviewBean {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Review "
                     + " VALUES ("+userID+","+ reviewId+",'"+companyName+"','"+date +"','"+title+"','"+body+"',"+0+ ")");
-            rs.close();
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Review");

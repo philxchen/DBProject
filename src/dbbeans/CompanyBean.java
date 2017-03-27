@@ -43,7 +43,6 @@ public class CompanyBean {
             if (rs.next()) {
                 rating = rs.getDouble(1);
             }
-
             st.close();
         } catch (SQLException e) {
             e.printStackTrace();

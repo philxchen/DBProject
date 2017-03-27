@@ -1,4 +1,9 @@
-<%--
+<%@ page import="dbbeans.CompanyBean" %>
+<%@ page import="dbbeans.JobsBean" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="dbbeans.DataAccess" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: michaelhuang
   Date: 2017-03-26
@@ -7,13 +12,57 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String companyName=request.getParameter("companyName");
-out.print(companyName);
+double rating=(new CompanyBean()).getRating(companyName);
+
+    Connection connection= DataAccess.getConnection();
+    String location="";
+    String website="";
+    int numOfEmployee=0;
+
+    try {
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM company where Company_Name='" + companyName + "'");
+        if (rs.next()) {
+            location = rs.getString("Location");
+            website = rs.getString("Website");
+            numOfEmployee = rs.getInt("Number_Of_Employees");
+        }
+    }
+        catch(Exception e){
+        e.printStackTrace();
+        }
 %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
+<a href="studentMain.jsp">Home</a>
+<a href="viewJob.jsp">Back</a>
+<br/> <% out.print(companyName);%>
+<br/>Company rating is <% out.print(rating); %>
+<br/>Number of employee is <% out.print(numOfEmployee);%>
+<br/>Location is <% out.print(location);%>
+<br/>Website is <% out.print(website);%>
+<table style="width:100%">
+    <tr>
+        <th>Job_ID</th>
+        <th>Title</th>
+        <th>Company</th>
+        <th>Level</th>
+        <th>Positions</th>
+        <th>Salary</th>
+        <th>Start_Date</th>
+        <th>End_Date</th>
+    </tr>
+    <tr><%
+        out.print((new JobsBean()).getJobsInCompany(companyName));
+    %>
+    </tr>
+</table>
+<br/>
+<br/>The reviews for this company
+
 
 </body>
 </html>
