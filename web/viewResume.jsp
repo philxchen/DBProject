@@ -1,3 +1,4 @@
+<%@ page import="dbbeans.ResumeBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,9 +7,12 @@
 <body>
 <jsp:include page="studentHeader.jsp"/>
 <h1>
-    <%
-        out.print(session.getAttribute("userName"));
-    %>
+    Resume of
+    <% out.print(session.getAttribute("userName") + ", version " + request.getParameter("version")); %>
+    <% out.print((new ResumeBean()).retrieveResumeContent(
+            (Integer) session.getAttribute("userId"),
+            Integer.parseInt(request.getParameter("version"))
+    )); %>
 </h1>
 </body>
 </html>
