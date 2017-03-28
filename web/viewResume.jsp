@@ -12,6 +12,7 @@
     int userId = (Integer) session.getAttribute("userId");
     String userName = (String) session.getAttribute("userName");
     int version = Integer.parseInt(request.getParameter("version"));
+    if (version <= (Integer) session.getAttribute("maxVersion")) {
 %>
 <h1>
     Resume of
@@ -19,6 +20,13 @@
 </h1>
 <%=(new ResumeBean()).retrieveResumeContent(userId, version) %>
 <br>
+<%
+    } else {
+%>
+This version of resume does not exist.
+<%
+    }
+%>
 <h2>Comment</h2>
 <p>
     <%
@@ -39,7 +47,8 @@
         reviewRequestBean.insertResumeReviewRequest(userId, version); %> viewResume.jsp?version=<%=version%>">
         Send a new review request
     </a>
-    <% }} else {
+    <% }
+    } else {
         out.print(comment);
     } %>
 </p>
