@@ -23,13 +23,23 @@
 <p>
     <%
         String comment = (new ResumeReviewBean()).retrieveResumeReviewComment(userId, version);
+        ResumeReviewRequestBean reviewRequestBean = new ResumeReviewRequestBean();
         if (comment == null || comment.equals("")) {
     %>
     This resume received no comment.
-    <a href="<%(new ResumeReviewRequestBean()).insertResumeReviewRequest(userId, version); %>">
+    <%
+        if (reviewRequestBean.hasResumeReviewRequest(userId, version)) {
+    %>
+    You have requested a review.
+    <a href="<%reviewRequestBean.revokeResumeReviewRequest(userId, version);%> viewResume.jsp?version=<%=version%>">
+        Revoke
+    </a>
+    <% } else { %>
+    <a href="<%
+        reviewRequestBean.insertResumeReviewRequest(userId, version); %> viewResume.jsp?version=<%=version%>">
         Send a new review request
-    </a>.
-    <% } else {
+    </a>
+    <% }} else {
         out.print(comment);
     } %>
 </p>
