@@ -1,16 +1,14 @@
 package dbbeans;
+
 import java.sql.*;
+
 /**
  * Created by philxchen on 3/25/17.
  */
+
 public class DoesBean {
     private Connection connection;
     private Statement st;
-
-
-
-
-
 
     public void insertDoes(int userID,int jobID )
     {
@@ -26,10 +24,4 @@ public class DoesBean {
         }
     }
 
-
-
-
 }
-
-
-

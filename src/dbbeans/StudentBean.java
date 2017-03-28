@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by philxchen on 3/25/17.
  */
+
 public class StudentBean {
     private Connection connection;
     private Statement st;
@@ -25,7 +26,6 @@ public class StudentBean {
         }
     }
 
-
     public ArrayList getStudentList()
     {
         connection = DataAccess.getConnection();
@@ -36,13 +36,13 @@ public class StudentBean {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT u.fname,u.lname FROM users u, student s WHERE u.user_ID = s.user_ID GROUP BY user_ID");
         } catch(Exception e){
-            System.out.println("Cant read likeartist table");
+            System.out.println("Cant read table");
             e.printStackTrace();
         }
         try{
             while (rs.next())
             {
-                fname=rs.getString("fame");
+                fname=rs.getString("fname");
                 lname=rs.getString("lname");
                 studentList.add(fname + " " + lname);
             }
@@ -54,4 +54,3 @@ public class StudentBean {
     }
 
 }
-

@@ -17,7 +17,9 @@ import java.sql.Statement;
 /**
  * Created by philxchen on 3/26/17.
  */
+
 @WebServlet(name = "CreateResumeServlet")
+
 public class CreateResumeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String education = request.getParameter("education");

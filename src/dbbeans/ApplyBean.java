@@ -1,8 +1,12 @@
 package dbbeans;
+
 import java.sql.*;
+import java.util.ArrayList;
+
 /**
  * Created by philxchen on 3/25/17.
  */
+
 public class ApplyBean {
     private Connection connection;
     private Statement st;

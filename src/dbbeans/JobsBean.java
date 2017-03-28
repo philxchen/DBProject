@@ -7,6 +7,7 @@ import java.util.StringJoiner;
 /**
  * Created by michaelhuang on 2017-03-25.
  */
+
 public class JobsBean {
     private Connection connection;
     private Statement st;
@@ -149,8 +150,5 @@ public class JobsBean {
 //    public static void main(String[] args) {
 //        System.out.println((new JobsBean()).getAllInformation());
 //    }
+
 }
-
-
-
-

@@ -9,13 +9,13 @@ import java.util.ArrayList;
 /**
  * Created by philxchen on 3/25/17.
  */
+
 public class CompanyBean {
     private Connection connection;
     private Statement st;
     private ResultSet rs;
+    private String getCompanyList = "";
     private ArrayList<String> companyListBasedOnLocation=new ArrayList<>();
-
-
 
     public void insertCompany(String companyName, int numOfEmployee, String location, String website) {
         connection = DataAccess.getConnection();
@@ -28,6 +28,29 @@ public class CompanyBean {
             System.out.println("Cant insert into Company");
             e.printStackTrace();
         }
+    }
+
+    public String getCompanyList(){
+        connection = DataAccess.getConnection();
+        String companyName;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT * FROM company GROUP BY companyName");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            while (rs.next()) {
+                companyName = rs.getString("companyName");
+                getCompanyList += "<tr><tr><td>"
+                        + companyName
+                        + "</td><td>";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return getCompanyList;
     }
 
     public double getRating(String companyName) {
@@ -68,7 +91,5 @@ public class CompanyBean {
         }
         return companyListBasedOnLocation;
     }
+
 }
-
-
-
