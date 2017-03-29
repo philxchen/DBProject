@@ -1,16 +1,20 @@
-<%@ page import="dbbeans.DataAccess" %>
 <%@ page import="java.sql.Connection" %>
+<%@ page import="dbbeans.DataAccess" %>
+<%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.Date" %><%--
+<%@ page import="dbbeans.JobsBean" %>
+<%@ page import="dbbeans.ApproveBean" %><%--
   Created by IntelliJ IDEA.
   User: michaelhuang
-  Date: 2017-03-26
-  Time: 6:43 PM
+  Date: 2017-03-29
+  Time: 4:24 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% int jobId=Integer.parseInt(request.getParameter("jobId"));
+<%
+    int adminId=(Integer)session.getAttribute("adminId");
+    int jobId=Integer.parseInt(request.getParameter("jobId"));
     Connection connection= DataAccess.getConnection();
     String companyName="";
     String title="";
@@ -32,7 +36,10 @@
             startDate=rs.getDate("Start_date");
             endDate=rs.getDate("End_date");
             description=rs.getString("Description");
+            (new JobsBean()).insertJobs(companyName,title,description,studentLevel,numOfPos,salary,startDate,endDate);
+            (new ApproveBean()).insertApprove(adminId,jobId);
         }
+
     }
     catch (Exception e){
         e.printStackTrace();
@@ -41,35 +48,10 @@
 %>
 <html>
 <head>
-    <title>title  </title>
+    <title>Approve</title>
 </head>
 <body>
-<a href="studentMain.jsp">Home</a>
-<a href="job.jsp">Back</a>
-
-<a href="logout.jsp">Logout</a>
-
-<br/>
-<% out.print(title);%>
-<br/>
-Description
-<br/>
-<% out.print(description);%>
-<br/>
-<br/>
-Start Date is <% out.print(startDate); %>
-<br/>
-End Date is <% out.print(endDate); %>
-<br/>
-Company Name is <% out.print(companyName);%>
-<br/>
-Number of position is <% out.print(numOfPos); %>
-<br/>
-
-<br/>
-<a href="applySuccess.jsp?jobId=<%=jobId%>&numOfPos=<%=numOfPos %>">Apply</a>
-<br/>
-<a href="companyInfo.jsp?companyName=<%=companyName%>&jobId=<%=jobId %>"> Company Information</a>
+<a href="jobPending.jsp">Back</a>
+Approve success
 </body>
-
 </html>
