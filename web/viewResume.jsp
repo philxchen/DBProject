@@ -12,7 +12,11 @@
     int userId = (Integer) session.getAttribute("userId");
     String userName = (String) session.getAttribute("userName");
     int version = Integer.parseInt(request.getParameter("version"));
-    if (version <= (Integer) session.getAttribute("maxVersion")) {
+    if (version > (Integer) session.getAttribute("maxVersion")) {
+%>
+<p>This version of resume does not exist.</p>
+<%
+    } else {
 %>
 <h1>
     Resume of
@@ -20,13 +24,6 @@
 </h1>
 <%=(new ResumeBean()).retrieveResumeContent(userId, version) %>
 <br>
-<%
-    } else {
-%>
-This version of resume does not exist.
-<%
-    }
-%>
 <h2>Comment</h2>
 <p>
     <%
@@ -50,7 +47,7 @@ This version of resume does not exist.
     <% }
     } else {
         out.print(comment);
-    } %>
+    }} %>
 </p>
 </body>
 </html>
