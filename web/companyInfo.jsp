@@ -14,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String companyName=request.getParameter("companyName");
 double rating=(new CompanyBean()).getRating(companyName);
-
+int jobId=Integer.parseInt(request.getParameter("jobId"));
     Connection connection= DataAccess.getConnection();
     String location="";
     String website="";
@@ -39,7 +39,7 @@ double rating=(new CompanyBean()).getRating(companyName);
 </head>
 <body>
 <a href="studentMain.jsp">Home</a>
-<a href="viewJob.jsp">Back</a>
+<a href="viewJob.jsp?jobId=<%=jobId%>">Back</a>
 <br/> <% out.print(companyName);%>
 <br/>Company rating is <% out.print(rating); %>
 <br/>Number of employee is <% out.print(numOfEmployee);%>
@@ -49,7 +49,6 @@ double rating=(new CompanyBean()).getRating(companyName);
     <tr>
         <th>Job_ID</th>
         <th>Title</th>
-        <th>Company</th>
         <th>Level</th>
         <th>Positions</th>
         <th>Salary</th>

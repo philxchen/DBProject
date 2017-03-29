@@ -41,4 +41,8 @@ public class ApplyBean {
         }
     }
 
+    public static void main(String[] args) {
+        ApplyBean applyBean=new ApplyBean();
+    }
+
 }

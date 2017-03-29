@@ -30,6 +30,7 @@ public class ReviewBean {
         int reviewId=0;
         int voteCount=0;
         String title = "";
+        String company_Name="";
         Date date;
 
         connection = DataAccess.getConnection();
@@ -40,6 +41,8 @@ public class ReviewBean {
                 reviewId = rs.getInt("Review_ID");
                 title = rs.getString("Title");
                 description=rs.getString("Body");
+                voteCount=rs.getInt("vote_count");
+                company_Name=rs.getString("Company_Name");
                 date = rs.getDate("Date");
 
                reviewInfoBaseOnCompany += "<tr><tr><td>"
@@ -52,6 +55,8 @@ public class ReviewBean {
                         + voteCount
                         + "</td><td><a href=\"voteSuccess.jsp?reviewId="
                         + reviewId
+                        + "&companyName="
+                        + company_Name
                         + "\">"
                         + "<button name=\"button\">upvote</button>"
                         + "</a></td></tr>";

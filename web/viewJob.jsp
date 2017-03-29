@@ -12,6 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% int jobId=Integer.parseInt(request.getParameter("jobId"));
     Connection connection= DataAccess.getConnection();
+    session.setAttribute("jobId",jobId);
     String companyName="";
     String title="";
     String description="";
@@ -69,7 +70,7 @@ Number of position is <% out.print(numOfPos); %>
 <br/>
 <a href="applySuccess.jsp?jobId=<%=jobId%>&numOfPos=<%=numOfPos %>">Apply</a>
 <br/>
-<a href="companyInfo.jsp?companyName=<%=companyName%>">Company Information</a>
+<a href="companyInfo.jsp?companyName=<%=companyName%>&jobId=<%=jobId %>"> Company Information</a>
 </body>
 
 </html>
