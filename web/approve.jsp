@@ -36,15 +36,16 @@
             startDate=rs.getDate("Start_date");
             endDate=rs.getDate("End_date");
             description=rs.getString("Description");
-            (new JobsBean()).insertJobs(companyName,title,description,studentLevel,numOfPos,salary,startDate,endDate);
-            (new ApproveBean()).insertApprove(adminId,jobId);
         }
-
     }
     catch (Exception e){
         e.printStackTrace();
 
     }
+%>
+<%
+    (new JobsBean()).insertJobs(jobId,companyName,title,description,studentLevel,numOfPos,salary,startDate,endDate);
+    (new ApproveBean()).insertApprove(adminId,jobId);
 %>
 <html>
 <head>

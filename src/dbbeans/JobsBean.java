@@ -15,16 +15,16 @@ public class JobsBean {
     private String allInformation = "";
     private String jobsInCompany="";
 
-    public void insertJobs(String companyName, String title, String description, int studentLevel, int numOfPos, int salary, Date start_date, Date end_date) {
+    public void insertJobs(int jobId,String companyName, String title, String description, int studentLevel, int numOfPos, int salary, Date start_date, Date end_date) {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Jobs "
-                    + " VALUES (default '" + companyName + "','" + title + "','" + description + "'," + studentLevel + "," + numOfPos + "," + salary + ",'" + start_date + "','" + end_date + "')");
+                    + " VALUES ("+jobId+"'" + companyName + "','" + title + "','" + description + "'," + studentLevel + "," + numOfPos + "," + salary + ",'" + start_date + "','" + end_date + "')");
 
             st.close();
         } catch (Exception e) {
-            System.out.println("Cant insert into Job_for_program");
+            System.out.println("Cant insert into Job");
             e.printStackTrace();
         }
     }
@@ -146,9 +146,8 @@ public class JobsBean {
         return jobsInCompany;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println((new JobsBean()).getAllInformation());
-//    }
+
+
 }
 
 
