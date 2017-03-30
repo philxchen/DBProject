@@ -1,14 +1,15 @@
 package dbbeans;
-
 import java.sql.*;
-
 /**
  * Created by michaelhuang on 2017-03-25.
  */
-
 public class UpvoteBean {
     private Connection connection;
     private Statement st;
+
+
+
+
 
     public void insertUpvote(int userID,int reviewId )
     {
@@ -25,4 +26,7 @@ public class UpvoteBean {
         }
     }
 
+
 }
+
+

@@ -3,7 +3,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="dbbeans.DataAccess" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="dbbeans.ReviewBean" %><%--
   Created by IntelliJ IDEA.
   User: michaelhuang
   Date: 2017-03-26
@@ -13,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String companyName=request.getParameter("companyName");
 double rating=(new CompanyBean()).getRating(companyName);
-
+int jobId=Integer.parseInt(request.getParameter("jobId"));
     Connection connection= DataAccess.getConnection();
     String location="";
     String website="";
@@ -38,7 +39,7 @@ double rating=(new CompanyBean()).getRating(companyName);
 </head>
 <body>
 <a href="studentMain.jsp">Home</a>
-<a href="viewJob.jsp">Back</a>
+<a href="viewJob.jsp?jobId=<%=jobId%>">Back</a>
 <br/> <% out.print(companyName);%>
 <br/>Company rating is <% out.print(rating); %>
 <br/>Number of employee is <% out.print(numOfEmployee);%>
@@ -48,7 +49,6 @@ double rating=(new CompanyBean()).getRating(companyName);
     <tr>
         <th>Job_ID</th>
         <th>Title</th>
-        <th>Company</th>
         <th>Level</th>
         <th>Positions</th>
         <th>Salary</th>
@@ -62,7 +62,20 @@ double rating=(new CompanyBean()).getRating(companyName);
 </table>
 <br/>
 <br/>The reviews for this company
+<table style="width:100%">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>VoteCount</th>
+        <th>Upvote</th>
 
+    </tr>
+    <tr><%
+        out.print((new ReviewBean()).getReviewInfoBaseOnCompany(companyName));
+    %>
+    </tr>
+</table>
 
 </body>
 </html>
