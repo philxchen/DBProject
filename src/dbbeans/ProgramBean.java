@@ -75,8 +75,7 @@ public class ProgramBean {
             System.out.println("Cant read program table");
         }
         try{
-            while (rs.next())
-            {
+            while (rs.next()) {
                 programName=rs.getString("Program_Name");
                 programInField.add(programName);
 
@@ -99,11 +98,9 @@ public class ProgramBean {
             e.printStackTrace();
         }
         try{
-            while (rs.next())
-            {
+            while (rs.next()) {
                 programName=rs.getString("Program_Name");
                 allProgram.add(programName);
-
             }
         }catch(Exception e){
             System.out.println("Error creating table "+e);

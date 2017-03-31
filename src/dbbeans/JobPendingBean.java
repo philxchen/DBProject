@@ -1,11 +1,13 @@
 package dbbeans;
 
-        import java.sql.*;
+import java.sql.*;
         import java.util.ArrayList;
         import java.util.StringJoiner;
+
 /**
  * Created by michaelhuang on 2017-03-29.
  */
+
 public class JobPendingBean {
     private Connection connection;
     private Statement st;
@@ -25,8 +27,6 @@ public class JobPendingBean {
             e.printStackTrace();
         }
     }
-
-
 
     public String getAllInformation() {
         int jobId = 0;
@@ -83,6 +83,5 @@ public class JobPendingBean {
         }
         return allInformation;
     }
-
 
 }

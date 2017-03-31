@@ -61,8 +61,10 @@ public class CompanyBean {
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT avg(Mark) FROM Rate_Company r, Company c WHERE r.company_Name=c.company_Name AND c.company_Name='" +
-                    companyName + "'"
-            );
+                    companyName + "'");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }try {
             if (rs.next()) {
                 rating = rs.getDouble(1);
             }
@@ -71,6 +73,26 @@ public class CompanyBean {
             e.printStackTrace();
         }
         return rating;
+    }
+
+    public String getCompanyListBasedOnRating(){
+        connection = DataAccess.getConnection();
+        String companyName;
+        double rating = 0;
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT avg(Mark) FROM Rate_Company r, Company c WHERE r.company_Name=c.company_Name ORDER BY mark");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } try {
+            while (rs.next()) {
+                rating = rs.getDouble(1);;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return getCompanyListBasedOnRating();
     }
 
     public ArrayList<String> getCompanyListBasedOnLocation(String location){
@@ -85,7 +107,7 @@ public class CompanyBean {
             }
         }
         catch (Exception e){
-            System.out.println("cant get list based on location");
+            System.out.println("Cant get list based on location");
             e.printStackTrace();
 
         }
