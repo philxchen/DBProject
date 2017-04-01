@@ -149,14 +149,8 @@ INSERT INTO Jobs VALUES
 	(5,'Hertz','Manager','clacla',2,5,2000,'10-06-2018','11-06-2018'),
 	(6,'Apple','Experience staf','deladela',1,100,300,'01-01-2018','05-01-2018'),
 	(7,'Apple','Manager','lalala',5,1,1500,'07-07-2018','07-09-2018'),
-	(8,'Yahoo','Mechanical designer','deladela',4,10,1000,'01-04-2018','05-02-2018'),
-	(9,'Playboy','Clothes designer','deladela',3,1,2000,'07-07-2018','09-07-2018'),
-	(10,'IBM','Test engineer','deladela',4,2,1500,'02-01-2018','03-03-2018'),
-	(11,'Pepsi','Seller','deladela',4,20,2000,'05-08-2018','06-09-2018'),
-	(12,'BestBuy','HR','deladela',1,4,3000,'03-09-2018','04-10-2018'),
-	(13,'Fido','Seller','deladela',2,30,1500,'08-10-2018','09-11-2018'),
-	(14,'Rogers','Player','deladela',3,2,1520,'12-03-2018','02-01-2019'),
-	(15,'Nintend','Electrician','deladela',2,10,2000,'03-04-2018','04-06-2018'); 
+	(8,'Yahoo','Mechanical designer','deladela',4,10,1000,'01-04-2018','05-02-2018');
+
 
 INSERT INTO Resume VALUES
 	(1, 1,'Cgpa 8/10','Good at databse design and web design','None'),
@@ -305,16 +299,14 @@ INSERT INTO Apply VALUES
 	
 
 INSERT INTO Approve VALUES
-	(1, 3),
-	(2, 14),
-	(3, 7),
+	(1, 1),
+	(2, 2),
+	(3, 3),
 	(4, 4),
-	(5, 2),
-	(6, 10),
-	(7, 6),
-	(8, 1),
-	(9, 5),
-	(10, 7);
+	(5, 5),
+	(6, 6),
+	(1,7),
+	(1,8);
 
 INSERT INTO Job_for_program VALUES
 	('CSI', 1),
