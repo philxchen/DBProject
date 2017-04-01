@@ -29,7 +29,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<a href="review.jsp">Back</a>
 <h1>Create a review</h1>
 <h2>Company Name : <%
     out.println(companyName);
