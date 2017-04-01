@@ -124,33 +124,44 @@ INSERT INTO Company VALUES
 	('Nintend',345,'Halifax','Nintend.ca');
 	
 INSERT INTO jobPending VALUES
-	(default, 'Red 1 Engineering', 'Mechanical designer', 'blabla', 3, 2, 500, '04-03-2018', '04-05-2018'),
+	(default, 'Red 1 Engineering', 'Mechanical designer', 'blabla', 3, 20, 500, '04-03-2018', '04-05-2018'),
 	(default, 'Red 1 Engineering', 'Test engineer', 'clacla', 2, 10, 250, '04-03-2018', '04-05-2018'),
-	(default, 'Blue 2 Science', 'Electrician', 'deladela', 4, 1, 700, '04-03-2018', '04-04-2018'),
+	(default, 'Blue 2 Science', 'Electrician', 'deladela', 4, 10, 700, '04-03-2018', '04-04-2018'),
 	(default,'Subway','Seller','blabla',3,10,1000,'10-06-2018','11-06-2018'),
-	(default,'Hertz','Manager','clacla',2,5,2000,'10-06-2018','11-06-2018'),
+	(default,'Hertz','Manager','clacla',2,50,2000,'10-06-2018','11-06-2018'),
 	(default,'Apple','Experience staf','deladela',1,100,300,'01-01-2018','05-01-2018'),
-	(default,'Apple','Manager','lalala',5,1,1500,'07-07-2018','07-09-2018'),
+	(default,'Apple','Manager','lalala',5,10,1500,'07-07-2018','07-09-2018'),
 	(default,'Yahoo','Mechanical designer','deladela',4,10,1000,'01-04-2018','05-02-2018'),
-	(default,'Playboy','Clothes designer','deladela',3,1,2000,'07-07-2018','09-07-2018'),
-	(default,'IBM','Test engineer','deladela',4,2,1500,'02-01-2018','03-03-2018'),
+	(default,'Playboy','Clothes designer','deladela',3,10,2000,'07-07-2018','09-07-2018'),
+	(default,'IBM','Test engineer','deladela',4,20,1500,'02-01-2018','03-03-2018'),
 	(default,'Pepsi','Seller','deladela',4,20,2000,'05-08-2018','06-09-2018'),
-	(default,'BestBuy','HR','deladela',1,4,3000,'03-09-2018','04-10-2018'),
+	(default,'BestBuy','HR','deladela',1,40,3000,'03-09-2018','04-10-2018'),
 	(default,'Fido','Seller','deladela',2,30,1500,'08-10-2018','09-11-2018'),
-	(default,'Rogers','Player','deladela',3,2,1520,'12-03-2018','02-01-2019'),
-	(default,'Nintend','Electrician','deladela',2,10,2000,'03-04-2018','04-06-2018'); 
+	(default,'Rogers','Player','deladela',3,20,1520,'12-03-2018','02-01-2019'),
+	(default,'Nintend','Electrician','deladela',2,10,2000,'03-04-2018','04-06-2018'),
+	(default,'Apple','Player','deladela',3,10,2500,'06-03-2018','08-03-2018'),
+	(default,'Fido','Manager','deladela',4,10,20000,'09-10-2018','11-10-2018'),
+	(default,'Subway','HR','deladela',3,50,2000,'11-10-2018','01-10-2019'),
+	(default,'Pepsi','Designer','deladela',2,100,1000,'06-10-2018','07-10-2018'),
+	(default,'Blue 2 Science','Electrician','deladela',3,30,2000,'03-10-2018','04-01-2018'); 
 	
 
 INSERT INTO Jobs VALUES
-	(1, 'Red 1 Engineering', 'Mechanical designer', 'blabla', 3, 2, 500, '04-03-2018', '04-05-2018'),
+	(1, 'Red 1 Engineering', 'Mechanical designer', 'blabla', 3, 20, 500, '04-03-2018', '04-05-2018'),
 	(2, 'Red 1 Engineering', 'Test engineer', 'clacla', 2, 10, 250, '04-03-2018', '04-05-2018'),
-	(3, 'Blue 2 Science', 'Electrician', 'deladela', 4, 1, 700, '04-03-2018', '04-04-2018'),
+	(3, 'Blue 2 Science', 'Electrician', 'deladela', 4, 10, 700, '04-03-2018', '04-04-2018'),
 	(4,'Subway','Seller','blabla',3,10,1000,'10-06-2018','11-06-2018'),
-	(5,'Hertz','Manager','clacla',2,5,2000,'10-06-2018','11-06-2018'),
+	(5,'Hertz','Manager','clacla',2,50,2000,'10-06-2018','11-06-2018'),
 	(6,'Apple','Experience staf','deladela',1,100,300,'01-01-2018','05-01-2018'),
-	(7,'Apple','Manager','lalala',5,1,1500,'07-07-2018','07-09-2018'),
-	(8,'Yahoo','Mechanical designer','deladela',4,10,1000,'01-04-2018','05-02-2018');
-
+	(7,'Apple','Manager','lalala',5,10,1500,'07-07-2018','07-09-2018'),
+	(8,'Yahoo','Mechanical designer','deladela',4,10,1000,'01-04-2018','05-02-2018'),
+	(9,'Playboy','Clothes designer','deladela',3,10,2000,'07-07-2018','09-07-2018'),
+	(10,'IBM','Test engineer','deladela',4,20,1500,'02-01-2018','03-03-2018'),
+	(11,'Pepsi','Seller','deladela',4,20,2000,'05-08-2018','06-09-2018'),
+	(12,'BestBuy','HR','deladela',1,40,3000,'03-09-2018','04-10-2018'),
+	(13,'Fido','Seller','deladela',2,30,1500,'08-10-2018','09-11-2018'),
+	(14,'Rogers','Player','deladela',3,20,1520,'12-03-2018','02-01-2019'),
+	(15,'Nintend','Electrician','deladela',2,10,2000,'03-04-2018','04-06-2018'); 
 
 INSERT INTO Resume VALUES
 	(1, 1,'Cgpa 8/10','Good at databse design and web design','None'),
@@ -299,14 +310,22 @@ INSERT INTO Apply VALUES
 	
 
 INSERT INTO Approve VALUES
-	(1, 1),
-	(2, 2),
-	(3, 3),
+	(1, 3),
+	(2, 1),
+	(3, 2),
 	(4, 4),
-	(5, 5),
-	(6, 6),
-	(1,7),
-	(1,8);
+	(5, 8),
+	(6, 10),
+	(7, 6),
+	(8, 12),
+	(9, 5),
+	(10, 7),
+	(6, 9),
+	(9,11),
+	(10,13),
+	(1,14),
+	(3,15);
+	
 
 INSERT INTO Job_for_program VALUES
 	('CSI', 1),
@@ -389,6 +408,25 @@ INSERT INTO Does VALUES
 	(17, 9),
 	(18, 2),
 	(20,8);
+DROP TABLE Apply;
+DROP TABLE Approve;
+DROP TABLE Does;
+DROP TABLE Job_for_program;
+DROP TABLE Upvote;
+DROP TABLE Review;
+DROP TABLE ResumeReview;
+DROP TABLE ResumeReviewRequest;
+DROP TABLE Resume;
+DROP TABLE Jobs;
+DROP TABLE Rate_Company;
+DROP TABLE JobPending;
+DROP TABLE Company;
+DROP TABLE Student;
+DROP TABLE Admin;
+DROP TABLE Moderator;
+DROP TABLE Program;
+DROP TABLE Users;
+
 
 
 
