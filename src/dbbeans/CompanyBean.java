@@ -91,9 +91,6 @@ public class CompanyBean {
         return allCompanyList;
     }
 
-    public static void main(String[] args) {
-        System.out.print((new CompanyBean()).getAllCompanyList());
-    }
 }
 
 

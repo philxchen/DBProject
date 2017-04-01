@@ -10,13 +10,14 @@ public class ReviewBean {
     private String reviewInfoBaseOnCompany;
 
 
-    public void insertReview(int userID,int reviewId, String companyName,Date date,String title, String body )
+    public void insertReview(int userID, String companyName,Date date,String title, String body )
     {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Review "
-                    + " VALUES ("+userID+","+ reviewId+",'"+companyName+"','"+date +"','"+title+"','"+body+"',"+0+ ")");
+                    + " VALUES ("+userID+",DEFAULT ,'"+companyName+"','"+date +"','"+title+"','"+body+"',"+0+ ")");
+
             st.close();
         }catch(Exception e){
             System.out.println("Cant insert into Review");

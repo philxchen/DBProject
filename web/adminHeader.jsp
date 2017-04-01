@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
-    <a href="studentMain.jsp">Home</a>
+    <a href="adminMain.jsp">Home</a>
     <a href="jobPending.jsp">Job pending list</a>
     <a href="rateCompany.jsp">Rate Company</a>
     <a href="logout.jsp">Logout</a>
