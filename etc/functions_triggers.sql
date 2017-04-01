@@ -49,7 +49,7 @@ BEFORE INSERT OR UPDATE ON Admin
 FOR EACH ROW EXECUTE PROCEDURE unique_user_role();
 
 
-CREATE FUNCTION increase_num_Emp()
+CREATE OR REPLACE FUNCTION increase_num_Emp()
   RETURNS TRIGGER AS
 $$
 BEGIN
@@ -68,7 +68,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE increase_num_Emp();
 
 
-CREATE FUNCTION reduce_job_positions()
+CREATE OR REPLACE FUNCTION reduce_job_positions()
   RETURNS TRIGGER AS
 $$
 BEGIN
@@ -79,13 +79,14 @@ BEGIN
 END;
 $$
 LANGUAGE 'plpgsql';
+
 CREATE TRIGGER student_hired
 AFTER INSERT ON Does
 FOR EACH ROW
 EXECUTE PROCEDURE reduce_job_positions();
 
 
-CREATE FUNCTION check_position_avaliable()
+CREATE OR REPLACE FUNCTION check_position_avaliable()
   RETURNS TRIGGER AS
 $$
 BEGIN
@@ -106,7 +107,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE check_position_avaliable();
 
 
-CREATE FUNCTION count_update()
+CREATE OR REPLACE FUNCTION count_update()
   RETURNS TRIGGER AS
 $$
 BEGIN
