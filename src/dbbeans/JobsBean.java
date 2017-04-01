@@ -20,7 +20,7 @@ public class JobsBean {
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Jobs "
-                    + " VALUES ("+jobId+"， '" + companyName + "','" + title + "','" + description + "'," + studentLevel + "," + numOfPos + "," + salary + ",'" + start_date + "','" + end_date + "')");
+                    + " VALUES ("+jobId+",'" + companyName + "','" + title + "','" + description + "'," + studentLevel + "," + numOfPos + "," + salary + ",'" + start_date + "','" + end_date + "')");
 
             st.close();
         } catch (Exception e) {
@@ -73,7 +73,7 @@ public class JobsBean {
                 salary = rs.getInt("Salary");
                 startDate = rs.getDate("Start_date");
                 endDate = rs.getDate("End_date");
-                allInformation += "<tr><tr><td><a href=\"viewJob.jsp?jobId="
+                allInformation += "<tr><td><a href=\"viewJob.jsp?jobId="
                         + jobId
                         + "\">"
                         + jobId

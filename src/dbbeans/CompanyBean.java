@@ -14,6 +14,7 @@ public class CompanyBean {
     private Statement st;
     private ResultSet rs;
     private ArrayList<String> companyListBasedOnLocation=new ArrayList<>();
+    private String allCompanyList="";
 
 
 
@@ -67,6 +68,31 @@ public class CompanyBean {
 
         }
         return companyListBasedOnLocation;
+    }
+
+    public String getAllCompanyList(){
+        String companyName="";
+        connection=DataAccess.getConnection();
+        try{st=connection.createStatement();
+            rs=st.executeQuery("SELECT Company_Name FROM company ");
+            while (rs.next()){
+                companyName=rs.getString("Company_Name");
+                allCompanyList+="<tr><td><a href=\"ratePage.jsp?companyName="
+                        +companyName
+                        +"\">"
+                        +companyName
+                        +"</a></td></tr>";
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return allCompanyList;
+    }
+
+    public static void main(String[] args) {
+        System.out.print((new CompanyBean()).getAllCompanyList());
     }
 }
 

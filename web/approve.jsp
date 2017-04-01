@@ -26,7 +26,7 @@
     Date endDate=null;
     try{
         Statement st=connection.createStatement();
-        ResultSet rs=st.executeQuery("SELECT * FROM jobs where Job_ID='"+jobId+"'");
+        ResultSet rs=st.executeQuery("SELECT * FROM jobPending where Job_ID='"+jobId+"'");
         if(rs.next()){
             companyName=rs.getString("Company_Name");
             title=rs.getString("Title");
