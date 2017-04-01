@@ -53,7 +53,7 @@ CREATE TABLE Company (
 );
 
 CREATE TABLE Jobs (
-  Job_ID              SERIAL,
+  Job_ID              INTEGER,
   Company_Name        VARCHAR(20) NOT NULL,
   Title               VARCHAR(30),
   Description         TEXT,
@@ -109,7 +109,7 @@ CREATE TABLE ResumeReview (
 
 CREATE TABLE Review (
   User_ID      INTEGER,
-  Review_ID    INTEGER,
+  Review_ID    SERIAL,
   Company_Name VARCHAR(30),
   Date         DATE,
   Title        VARCHAR(30),
@@ -197,4 +197,23 @@ CREATE TABLE Does (
   FOREIGN KEY (Job_ID) REFERENCES Jobs
   ON DELETE CASCADE
   ON UPDATE CASCADE
+);
+
+CREATE TABLE jobPending(
+  Job_ID              SERIAL,
+  Company_Name        VARCHAR(20) NOT NULL,
+  Title               VARCHAR(30),
+  Description         TEXT,
+  Student_Level       INTEGER,
+  Number_Of_Positions INTEGER,
+  Salary              INTEGER,
+  Start_date          DATE,
+  End_date            DATE,
+  PRIMARY KEY (Job_ID),
+  FOREIGN KEY (Company_Name) REFERENCES Company
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  CONSTRAINT Student_level_check CHECK (Student_Level >= 1 AND Student_Level <= 6),
+  CONSTRAINT Number_of_positions CHECK (Number_Of_Positions >= 0),
+  CONSTRAINT Salary_check CHECK (Salary >= 0)
 );

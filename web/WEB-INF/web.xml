@@ -36,4 +36,14 @@
         <url-pattern>/JobViewServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>RateCompanyServlet</servlet-name>
+        <url-pattern>/RateCompanyServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RateCompanyServlet</servlet-name>
+        <servlet-class>controller.RateCompanyServlet</servlet-class>
+    </servlet>
+
 </web-app>

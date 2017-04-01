@@ -124,11 +124,18 @@ FOR EACH ROW
 EXECUTE PROCEDURE count_update();
 
 -- TODO: implement it
-CREATE FUNCTION approve_job()
-  RETURNS TRIGGER AS
+CREATE OR REPLACE FUNCTION deletePendingJob() RETURNS TRIGGER AS
 $$
 BEGIN
-
+  DELETE from JobPending
+  where JobPending.Job_ID=new.Job_ID;
+  RETURN NEW;
 END;
 $$
 LANGUAGE 'plpgsql';
+
+CREATE TRIGGER update_jobPending
+AFTER INSERT ON Jobs
+FOR EACH ROW
+EXECUTE PROCEDURE deletePendingJob();
+
