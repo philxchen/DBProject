@@ -19,7 +19,6 @@ public class RateCompanyServlet extends HttpServlet {
         String companyName=request.getParameter("companyName");
         int mark=Integer.parseInt(request.getParameter("rateCompany"));
         companyName=companyName.replace('+',' ');
-        System.out.println(companyName);
         HttpSession session=request.getSession();
         try{
             int userId=(Integer)session.getAttribute("userId");

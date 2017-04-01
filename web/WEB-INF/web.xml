@@ -46,4 +46,13 @@
         <servlet-class>controller.RateCompanyServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>CreateReviewServlet</servlet-name>
+        <url-pattern>/CreateReviewServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateReviewServlet</servlet-name>
+        <servlet-class>controller.CreateReviewServlet</servlet-class>
+    </servlet>
 </web-app>

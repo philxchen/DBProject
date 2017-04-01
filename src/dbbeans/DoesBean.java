@@ -37,7 +37,10 @@ public class DoesBean {
                 doesJobList+="<tr><td><a href=\"ratePage.jsp?companyName="
                         +jobId
                         +"\">"
+                        +jobId+"</td><td><a href=\"makeReview.jsp?jobId="
                         +jobId
+                        +"\">"
+                        +"<button name=\"button\">Create Review</button>"
                         +"</a></td></tr>";
             }
 
