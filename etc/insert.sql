@@ -180,7 +180,7 @@ INSERT INTO Resume VALUES
 	(13,14,'Cgpa 9/10','know how to design a new website','none' ),
 	(14,15,'Cgpa 5/6','overwatch number one','a job helps other people accoun go to higher level'),
 	(15,16,'Cgpa 6/8','nothing I want to tell','designer for rogers mobile one time'),
-	(16,17,'Cgpa 4.5/5','have a lot of work experience in group wrok and origztion well','Volutneer lot'),
+	(16, 17,'Cgpa 4.5/5','have a lot of work experience in group wrok and origztion well','Volutneer lot'),
 	(17,18,'Cgpa 7/8','good at study','want work experience'),
 	(18,19,'Cgpa 4/5','never give up','work in fido every weekend'),
 	(9,20,'Cgpa 8/10','work in math career centre','none'),
