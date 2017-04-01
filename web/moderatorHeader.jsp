@@ -4,4 +4,6 @@
     <a href="resumeReviewRequests.jsp">Review a resume</a>
     <a href="rateCompany.jsp">Rate a company</a>
     <a href="logout.jsp">Logout</a>
+    <br>
+    <jsp:include page="search.jsp"/>
 </div>

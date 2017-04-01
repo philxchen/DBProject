@@ -88,6 +88,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
                         }
                         break;
                 }
+                session.setAttribute("role", role);
 
 //              get user's name
                 if (session.getAttribute("userId") != null) {
