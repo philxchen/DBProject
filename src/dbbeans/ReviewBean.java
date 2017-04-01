@@ -40,7 +40,7 @@ public class ReviewBean {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT * FROM Review WHERE Company_Name='"+companyName+"'");
+            rs = st.executeQuery("SELECT * FROM Review WHERE Company_Name='"+companyName+"'ORDER BY vote_count DESC ");
             while (rs.next()) {
                 reviewId = rs.getInt("Review_ID");
                 title = rs.getString("Title");
