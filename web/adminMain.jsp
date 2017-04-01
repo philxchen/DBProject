@@ -12,12 +12,6 @@
 </head>
 <body>
 <jsp:include page="adminHeader.jsp"/>
-<h2>Welcome,
-    <%
-        out.print(session.getAttribute("userName"));
-
-    %>
-</h2>
-
+<h2>Welcome, <%=session.getAttribute("userName")%></h2>
 </body>
 </html>
