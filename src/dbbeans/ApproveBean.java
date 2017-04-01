@@ -1,16 +1,15 @@
 package dbbeans;
+
 import java.sql.*;
+
 /**
  * Created by philxchen on 3/25/17.
  */
+
 public class ApproveBean {
     private Connection connection;
     private Statement st;
     private ResultSet rs;
-
-
-
-
 
     public void insertApprove(int adminID,int jobID)
     {
@@ -27,10 +26,4 @@ public class ApproveBean {
         }
     }
 
-
-
-
 }
-
-
-

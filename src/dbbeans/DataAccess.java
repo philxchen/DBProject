@@ -8,6 +8,7 @@ import java.util.Properties;
 /**
  * provides access to our database
  */
+
 public class DataAccess {
     private static Connection dbConnection = null;
 
@@ -34,8 +35,8 @@ public class DataAccess {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             return dbConnection;
         }
     }
+
 }

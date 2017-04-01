@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Login to the Co-op system</h1>
-<p>Please select your role</p>
+<p>Please select your role:</p>
 <form method="post" action="LoginServlet">
     <input type="radio" name="roles" value="student" checked>
     Student

@@ -5,6 +5,7 @@ import java.sql.*;
 /**
  * Created by michaelhuang on 2017-03-25.
  */
+
 public class ResumeReviewBean {
     private Connection connection;
     private Statement st;
@@ -42,5 +43,3 @@ public class ResumeReviewBean {
     }
 
 }
-
-

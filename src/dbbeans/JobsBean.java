@@ -7,11 +7,14 @@ import java.util.StringJoiner;
 /**
  * Created by michaelhuang on 2017-03-25.
  */
+
 public class JobsBean {
     private Connection connection;
     private Statement st;
     private ResultSet rs;
     private ArrayList<String> jobListBasedOnLocation = new ArrayList<>();
+    private ArrayList<String> jobForStudentLevel = new ArrayList<>();
+    private ArrayList<String> jobListBySudentLevel = new ArrayList<>();
     private String allInformation = "";
     private String jobsInCompany="";
 
@@ -35,7 +38,7 @@ public class JobsBean {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT j.Title, j.job_ID FROM jobs j,company c where j.Company_Name=c.Company_Name AND c.location='" + location + "'");
+            rs = st.executeQuery("SELECT j.Title, j.job_ID FROM jobs j,company c WHERE j.Company_Name=c.Company_Name AND c.location='" + location + "'");
             while (rs.next()) {
                 jobName = rs.getString("Title");
                 jobid = rs.getInt("Job_ID");
@@ -48,6 +51,50 @@ public class JobsBean {
 
         }
         return jobListBasedOnLocation;
+    }
+
+    public ArrayList<String> getJobListByStudentLevel(Integer studentLevel) {
+        String jobName = "";
+        int jobid = 0;
+        int sLevel = 0;
+        connection = DataAccess.getConnection();
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT title, job_ID, studentLevel FROM jobs ORDER BY studentLevel");
+            while (rs.next()) {
+                jobName = rs.getString("Title");
+                jobid = rs.getInt("Job_ID");
+                sLevel = rs.getInt("studentLevel");
+
+                jobListBySudentLevel.add(jobName + " " + jobid + " " + sLevel);
+            }
+        } catch (Exception e) {
+            System.out.println("Cant get list based on location");
+            e.printStackTrace();
+
+        }
+        return jobListBySudentLevel;
+    }
+
+    public ArrayList<String> getJobForStudentLevel(Integer studentLevel) {
+        String jobName = "";
+        int jobid = 0;
+        connection = DataAccess.getConnection();
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT j.title, j.job_ID FROM jobs j WHERE j.studentLevel='" + studentLevel + "'");
+            while (rs.next()) {
+                jobName = rs.getString("Title");
+                jobid = rs.getInt("Job_ID");
+
+                jobForStudentLevel.add(jobName + " " + jobid);
+            }
+        } catch (Exception e) {
+            System.out.println("Cant get list based on location");
+            e.printStackTrace();
+
+        }
+        return jobForStudentLevel;
     }
 
     public String getAllInformation() {
@@ -100,6 +147,7 @@ public class JobsBean {
         }
         return allInformation;
     }
+
     public String getJobsInCompany(String company_Name){
         int jobId = 0;
 
@@ -146,10 +194,4 @@ public class JobsBean {
         return jobsInCompany;
     }
 
-
-
 }
-
-
-
-

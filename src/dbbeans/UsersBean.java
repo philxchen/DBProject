@@ -5,6 +5,7 @@ import java.sql.*;
 /**
  * Created by philxchen on 3/25/17.
  */
+
 public class UsersBean {
     private Connection connection;
     private Statement st;
@@ -12,7 +13,6 @@ public class UsersBean {
     private String getUserList = "";
     private int userID;
     private String email;
-
 
     public int getUserID(){
         connection = DataAccess.getConnection();
@@ -86,4 +86,3 @@ public class UsersBean {
     }
 
 }
-

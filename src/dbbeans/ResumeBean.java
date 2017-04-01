@@ -5,6 +5,7 @@ import java.sql.*;
 /**
  * Created by michaelhuang on 2017-03-25.
  */
+
 public class ResumeBean {
     private Connection connection;
     private Statement st;
@@ -65,7 +66,6 @@ public class ResumeBean {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return resultHtml;
     }
 }

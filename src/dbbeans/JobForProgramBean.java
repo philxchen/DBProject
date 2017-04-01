@@ -1,17 +1,15 @@
 package dbbeans;
+
 import java.sql.*;
+
 /**
  * Created by philxchen on 3/25/17.
  */
+
 public class JobForProgramBean {
     private Connection connection;
     private Statement st;
     private ResultSet rs;
-
-
-
-
-
 
     public void insertJobForProgram(String programName,int jobID)
     {
@@ -28,10 +26,4 @@ public class JobForProgramBean {
         }
     }
 
-
-
-
 }
-
-
-
