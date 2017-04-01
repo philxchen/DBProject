@@ -17,5 +17,7 @@
 </ul>
 <h2>Resume</h2>
 <%=(new ResumeBean()).retrieveResumeContent(userId, Integer.parseInt(request.getParameter("version"))) %>
+<h2>Add comment</h2>
+<form action="CreateResumeServlet"
 </body>
 </html>

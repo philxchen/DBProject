@@ -2,5 +2,6 @@
 <div>
     <a href="moderatorMain.jsp">Home</a>
     <a href="resumeReviewRequests.jsp">Review a resume</a>
+    <a href="rateCompany.jsp">Rate a company</a>
     <a href="logout.jsp">Logout</a>
 </div>

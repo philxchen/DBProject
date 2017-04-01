@@ -16,7 +16,7 @@
 %>
 <p>This version of resume does not exist.</p>
 <%
-    } else {
+} else {
 %>
 <h1>
     Resume of
@@ -36,18 +36,18 @@
         if (reviewRequestBean.hasResumeReviewRequest(userId, version)) {
     %>
     You have requested a review.
-    <a href="<%reviewRequestBean.revokeResumeReviewRequest(userId, version);%> viewResume.jsp?version=<%=version%>">
+    <a href="InsertOrRemoveResumeReviewRequestServlet?actionType=1&version=<%=version%>">
         Revoke
     </a>
     <% } else { %>
-    <a href="<%
-        reviewRequestBean.insertResumeReviewRequest(userId, version); %> viewResume.jsp?version=<%=version%>">
+    <a href="InsertOrRemoveResumeReviewRequestServlet?actionType=2&version=<%=version%>">
         Send a new review request
     </a>
     <% }
     } else {
         out.print(comment);
-    }} %>
+    }
+    } %>
 </p>
 </body>
 </html>
