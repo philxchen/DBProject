@@ -65,4 +65,14 @@
         <servlet-name>InsertOrRemoveResumeReviewRequestServlet</servlet-name>
         <url-pattern>/InsertOrRemoveResumeReviewRequestServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CreateResumeReviewServlet</servlet-name>
+        <url-pattern>/CreateResumeReviewServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateResumeReviewServlet</servlet-name>
+        <servlet-class>controller.CreateResumeReviewServlet</servlet-class>
+    </servlet>
 </web-app>

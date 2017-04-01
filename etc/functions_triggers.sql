@@ -123,12 +123,12 @@ AFTER INSERT ON Upvote
 FOR EACH ROW
 EXECUTE PROCEDURE count_update();
 
--- TODO: implement it
-CREATE OR REPLACE FUNCTION deletePendingJob() RETURNS TRIGGER AS
+CREATE OR REPLACE FUNCTION deletePendingJob()
+  RETURNS TRIGGER AS
 $$
 BEGIN
-  DELETE from JobPending
-  where JobPending.Job_ID=new.Job_ID;
+  DELETE FROM JobPending
+  WHERE JobPending.Job_ID = new.Job_ID;
   RETURN NEW;
 END;
 $$
@@ -138,4 +138,20 @@ CREATE TRIGGER update_jobPending
 AFTER INSERT ON Jobs
 FOR EACH ROW
 EXECUTE PROCEDURE deletePendingJob();
+
+CREATE OR REPLACE FUNCTION added_resume_review()
+  RETURNS TRIGGER AS
+$$
+BEGIN
+  DELETE FROM resumereviewrequest
+  WHERE user_id = new.user_id AND version_number = new.version_number;
+  RETURN NEW;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER added_resume_review
+AFTER INSERT ON resumereview
+FOR EACH ROW
+EXECUTE PROCEDURE added_resume_review();
 

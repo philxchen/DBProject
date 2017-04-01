@@ -18,6 +18,9 @@
 <h2>Resume</h2>
 <%=(new ResumeBean()).retrieveResumeContent(userId, Integer.parseInt(request.getParameter("version"))) %>
 <h2>Add comment</h2>
-<form action="CreateResumeServlet"
+<form action="CreateResumeReviewServlet?userId=<%=userId%>&version=<%=request.getParameter("version")%>" method="post">
+    <textarea name="comment" rows="10" cols="80"></textarea>
+    <input type="submit" value="Add">
+</form>
 </body>
 </html>
