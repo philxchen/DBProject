@@ -6,10 +6,28 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<a href="studentMain.jsp">Home</a>
+<%
+    switch ((String) session.getAttribute("role")) {
+        case "moderator":
+%>
+<jsp:include page="moderatorHeader.jsp"/>
+<%
+        break;
+    case "student":
+%>
+<jsp:include page="studentHeader.jsp"/>
+<%
+        break;
+    case "administrator":
+%>
+<jsp:include page="adminHeader.jsp"/>
+<%
+            break;
+    }
+%>
 <html>
 <head>
-    <title>Title</title>
+    <title>Rate company</title>
 </head>
 <body>
 <table style="width:100%">
