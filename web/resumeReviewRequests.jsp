@@ -8,6 +8,8 @@
 <jsp:include page="moderatorHeader.jsp"/>
 <h1>Pending review requests</h1>
 <table>
+    <th>User ID</th>
+    <th>Version</th>
     <%=(new ResumeReviewRequestBean()).retrieveResumeReviewRequests()%>
 </table>
 </body>
