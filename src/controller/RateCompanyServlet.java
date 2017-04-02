@@ -16,18 +16,16 @@ import java.io.IOException;
 @WebServlet(name = "RateCompanyServlet")
 public class RateCompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String companyName=request.getParameter("companyName");
-        int mark=Integer.parseInt(request.getParameter("rateCompany"));
-        companyName=companyName.replace('+',' ');
-        HttpSession session=request.getSession();
-        try{
-            int userId=(Integer)session.getAttribute("userId");
-            (new RateCompanyBean()).insertRateCompany(userId,companyName,mark);
+        String companyName = request.getParameter("companyName");
+        int mark = Integer.parseInt(request.getParameter("rateCompany"));
+        companyName = companyName.replace('+', ' ');
+        HttpSession session = request.getSession();
+        try {
+            int userId = (Integer) session.getAttribute("userId");
+            (new RateCompanyBean()).insertRateCompany(userId, companyName, mark);
             response.sendRedirect("rateCompany.jsp");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
 }

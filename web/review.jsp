@@ -17,10 +17,9 @@
 <jsp:include page="studentHeader.jsp"/>
 <table style="width:100%">
     <th>The jobs you have done</th>
-    <tr><%
+    <%
         out.print((new DoesBean()).getDoesJobList(userId));
     %>
-    </tr>
 </table>
 </body>
 </html>

@@ -42,7 +42,7 @@
 <br/>Company rating is <% out.print(rating); %>
 <br/>Number of employee is <% out.print(numOfEmployee);%>
 <br/>Location is <% out.print(location);%>
-<br/>Website is <% out.print(website);%>
+<br/>Website is <a href="http://<%=website%>"><%=website%></a>
 <br/>
 <form method="post" action="RateCompanyServlet">
 <table>
