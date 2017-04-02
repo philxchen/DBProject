@@ -114,9 +114,9 @@ public class JobsBean {
             Statement st = connection.createStatement();
 //          ORDER results if orderByColumn param is valid
             if (orderByColumn == null
-                || (!orderByColumn.equals("student_Level")
-                && !orderByColumn.equals("Number_Of_Positions")
-                && !orderByColumn.equals("Salary"))) {
+                    || (!orderByColumn.equals("student_Level")
+                    && !orderByColumn.equals("Number_Of_Positions")
+                    && !orderByColumn.equals("Salary"))) {
                 rs = st.executeQuery("SELECT * FROM jobs " +
                         "WHERE student_level <= " + studentLevel);
             } else {
@@ -204,6 +204,23 @@ public class JobsBean {
 
         }
         return jobsInCompany;
+    }
+
+    public String getCompanyName(int jobId) {
+        String companyName = "";
+        try {
+            Connection connection = DataAccess.getConnection();
+            Statement st = connection.createStatement();
+            rs = st.executeQuery("SELECT company_name " +
+                    "FROM jobs " +
+                    "WHERE job_id = " + jobId);
+            if (rs.next()) {
+                companyName = rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return companyName;
     }
 
 }

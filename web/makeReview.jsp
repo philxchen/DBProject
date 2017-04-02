@@ -26,7 +26,7 @@
     %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Make review</title>
 </head>
 <body>
 <a href="review.jsp">Back</a>
@@ -38,7 +38,7 @@
     <table>
         <tr>
             <td>Title</td>
-            <td><textarea name="title" rows="1" cols="8"></textarea></td>
+            <td><textarea name="title" rows="1" cols="20"></textarea></td>
         </tr>
         <tr>
             <td>Description</td>
