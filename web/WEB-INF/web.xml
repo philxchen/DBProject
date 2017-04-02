@@ -85,4 +85,14 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ForgotUserIdServlet</servlet-name>
+        <servlet-class>controller.ForgotUserIdServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ForgotUserIdServlet</servlet-name>
+        <url-pattern>/ForgotUserIdServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
