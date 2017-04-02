@@ -25,14 +25,15 @@ public class SearchServlet extends HttpServlet {
         String[] result = new String[6];
         try {
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT S.User_ID, Program, Student_Level, Email, Fname, Lname " +
+            ResultSet rs = st.executeQuery("SELECT DISTINCT ON (email) S.User_ID, Program, Student_Level, Email, Fname, Lname " +
                     "FROM Student S, Users U " +
                     "WHERE S.User_ID = U.User_ID AND " +
                     "(S.User_ID :: TEXT LIKE '%" + keywords + "%' OR " +
                     "Program LIKE '%" + keywords + "%' OR " +
                     "Student_Level :: TEXT LIKE '%" + keywords + "%' OR " +
                     "Email LIKE '%" + keywords + "%' OR " +
-                    "concat(Fname, ' ', Lname) LIKE '%" + keywords + "%');");
+                    "concat(Fname, ' ', Lname) LIKE '%" + keywords + "%') " +
+                    "ORDER BY email;");
 
             while (rs.next()) {
                 for (int i = 0; i < 6; i++) {
