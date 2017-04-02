@@ -2,7 +2,6 @@ package dbbeans;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.StringJoiner;
 
 /**
  * Created by michaelhuang on 2017-03-25.
@@ -16,14 +15,14 @@ public class JobsBean {
     private ArrayList<String> jobForStudentLevel = new ArrayList<>();
     private ArrayList<String> jobListBySudentLevel = new ArrayList<>();
     private String allInformation = "";
-    private String jobsInCompany="";
+    private String jobsInCompany = "";
 
-    public void insertJobs(int jobId,String companyName, String title, String description, int studentLevel, int numOfPos, int salary, Date start_date, Date end_date) {
+    public void insertJobs(int jobId, String companyName, String title, String description, int studentLevel, int numOfPos, int salary, Date start_date, Date end_date) {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
             st.executeUpdate("INSERT INTO Jobs "
-                    + " VALUES ("+jobId+",'" + companyName + "','" + title + "','" + description + "'," + studentLevel + "," + numOfPos + "," + salary + ",'" + start_date + "','" + end_date + "')");
+                    + " VALUES (" + jobId + ",'" + companyName + "','" + title + "','" + description + "'," + studentLevel + "," + numOfPos + "," + salary + ",'" + start_date + "','" + end_date + "')");
 
             st.close();
         } catch (Exception e) {
@@ -97,20 +96,34 @@ public class JobsBean {
         return jobForStudentLevel;
     }
 
-    public String getAllInformation() {
+    public String getAllInformation(int userId, String orderByColumn) {
+        int studentLevel = (new StudentBean()).getStudentLevel(userId);
         int jobId = 0;
         String companyName = "";
         String description = "";
-        int student_Level = 1;
+        int student_Level;
         int numOfPos = 0;
         int salary = 0;
         String title = "";
         Date startDate;
         Date endDate;
         connection = DataAccess.getConnection();
+
+
         try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT * FROM jobs");
+            Statement st = connection.createStatement();
+//          ORDER results if orderByColumn param is valid
+            if (orderByColumn == null
+                || (!orderByColumn.equals("student_Level")
+                && !orderByColumn.equals("Number_Of_Positions")
+                && !orderByColumn.equals("Salary"))) {
+                rs = st.executeQuery("SELECT * FROM jobs " +
+                        "WHERE student_level <= " + studentLevel);
+            } else {
+                rs = st.executeQuery("SELECT * FROM jobs " +
+                        "WHERE student_level <= " + studentLevel +
+                        " ORDER BY " + orderByColumn + " DESC");
+            }
             while (rs.next()) {
                 jobId = rs.getInt("Job_ID");
                 title = rs.getString("Title");
@@ -141,14 +154,13 @@ public class JobsBean {
                         "</td></tr>";
             }
         } catch (Exception e) {
-            System.out.println("cant get list based on location");
             e.printStackTrace();
 
         }
         return allInformation;
     }
 
-    public String getJobsInCompany(String company_Name){
+    public String getJobsInCompany(String company_Name) {
         int jobId = 0;
 
         String description = "";
@@ -161,7 +173,7 @@ public class JobsBean {
         connection = DataAccess.getConnection();
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT * FROM jobs WHERE company_Name='"+company_Name+"'");
+            rs = st.executeQuery("SELECT * FROM jobs WHERE company_Name='" + company_Name + "'");
             while (rs.next()) {
                 jobId = rs.getInt("Job_ID");
                 title = rs.getString("Title");
@@ -171,7 +183,7 @@ public class JobsBean {
                 startDate = rs.getDate("Start_date");
                 endDate = rs.getDate("End_date");
                 jobsInCompany += "<tr><tr><td> " +
-                        + jobId
+                        +jobId
                         + "</td><td>"
                         + title
                         + "</td><td>"

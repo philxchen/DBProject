@@ -53,4 +53,21 @@ public class StudentBean {
         return studentList;
     }
 
+    public int getStudentLevel(int userId) {
+        Connection connection = DataAccess.getConnection();
+        int level = 0;
+        try {
+            Statement st = connection.createStatement();
+            rs = st.executeQuery("SELECT student_level " +
+                    "FROM student " +
+                    "WHERE user_id=" + userId);
+            if (rs.next()) {
+                level = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return level;
+    }
+
 }
